@@ -1,0 +1,45 @@
+namespace 02.BankAccounts.Bank.Accounts
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Enumerations;
+
+    public class Mortgage : Account
+    {
+        //CONSTRUCTOR
+        public Mortgage(CustomerType customer, decimal balance, double interestRateInMonths) : base(customer, balance, interestRateInMonths)
+        {
+        }
+
+        //METHODS
+        public override double CalculateInterest(int period)
+        {
+            if (Customer == CustomerType.Company)
+            {
+                if (period > 12)
+                {
+                    return (((MonthlyInterestRate * 0.5) * 12) + (MonthlyInterestRate * (period - 12)));
+                }
+                else
+                {
+                    return ((MonthlyInterestRate * 0.5) * period);
+                }
+            }
+            else
+            {
+                return base.CalculateInterest(period - 6);
+            }
+        }
+        public override void DepositSum(decimal sum)
+        {
+            base.DepositSum(sum);
+        }
+        public override string ToString()
+        {
+            return "Mortgage Account";
+        }
+    }
+}
