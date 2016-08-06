@@ -1,0 +1,19 @@
+namespace 01_School_classes
+{
+    using System.Collections.Generic;
+
+    public class School
+    {
+        public School()
+        {
+            this.Classes=new List<Class>();
+        }
+
+        public List<Class> Classes { get; set; }
+
+        public void AddClass(Class newClass)
+        {
+            this.Classes.Add(newClass);
+        }
+    }
+}
