@@ -1,4 +1,4 @@
-namespace _02.Reverse_String
+namespace 01.Reverse_String
 {
     using System;
 
