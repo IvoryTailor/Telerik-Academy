@@ -1,0 +1,17 @@
+namespace 03_Animal_hierarchy.Animals
+{
+    using System;
+    using Enumerations;
+
+    public class Frog : Animal
+    {
+        public Frog(string name, int age, GenderType gender) : base(name, age, gender)
+        {
+        }
+
+        public override void MakeSound()
+        {
+            Console.WriteLine($"Frog: Croak croak, I am {this.Age}");
+        }
+    }
+}
