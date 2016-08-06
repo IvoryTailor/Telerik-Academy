@@ -1,0 +1,20 @@
+namespace 02_Students_And_Workers
+{
+    using Contracts;
+
+    public class Human : IHuman
+    {
+        private readonly string firstName;
+        private readonly string lastName;
+
+        public Human(string firstName, string lastName)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+        }
+
+        public string FirstName => this.firstName;
+
+        public string LastName => this.lastName;
+    }
+}
