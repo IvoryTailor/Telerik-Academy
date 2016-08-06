@@ -1,0 +1,51 @@
+using System;
+using 01.StudentClass.Students;
+using 01.StudentClass.Enumerations;
+
+namespace 01.StudentClass
+{
+    class TESTStudentClass
+    {
+        static void Main(string[] args)
+        {
+            Student student1 = new Student(
+                "Pesho", 
+                "Peshov", 
+                "Peshov",
+                223123014, 
+                "Peshova Mahala 13", 
+                "0987654321", 
+                "pesho@abv.bg", 
+                4, 
+                UniversityType.Telerik, 
+                FacultyType.ComputerScience, 
+                SpecialtyType.SoftwareEngineer
+                );
+
+            Student student2 = new Student(
+                "Mariika",
+                "Mariikova",
+                "Mariikova",
+                223123008,
+                "Do na Pesho mahalata 5",
+                "0887329618",
+                "marijka@gmail.com",
+                2,
+                UniversityType.TechnicalUniversity,
+                FacultyType.Engineering,
+                SpecialtyType.SoftwareEngineer
+                );
+
+            Console.WriteLine(student1.Equals(student2));
+            Console.WriteLine(student1 != student2);
+            Console.WriteLine("Hash Code:");
+            Console.WriteLine(student1.GetHashCode());
+            Console.WriteLine(student2.GetHashCode());
+            Console.WriteLine();
+            Console.WriteLine("Copy:");
+            Student student3 = student1.Clone();
+            Console.WriteLine(student3);
+            Console.WriteLine(student3.CompareTo(student1));
+        }
+    }
+}
