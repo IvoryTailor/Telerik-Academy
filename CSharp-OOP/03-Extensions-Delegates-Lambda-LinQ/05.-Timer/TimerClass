@@ -1,0 +1,21 @@
+namespace 05.Timer
+{
+    using System.Threading;
+
+    public static class TimerClass
+    {
+        public delegate void CustomDelegate();
+
+        public static void RunFunc(int seconds, CustomDelegate input)
+        {
+            var milliSeconds = (int)(seconds / 0.001);
+
+            while (true)
+            {
+                Thread.Sleep(milliSeconds);
+
+                input.Invoke();
+            }
+        }
+    }
+}
