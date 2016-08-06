@@ -1,0 +1,40 @@
+using System;
+
+namespace 05.Maximal_Increasing_Sequence
+{
+    class Program
+    {
+        static void Main()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int[] arr = new int[n];
+            int seq = 1;
+            int maxSeq = 1;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                for (int j = i + 1; j < arr.Length; j++)
+                {
+                    if (arr[i] < arr[j])
+                    {
+                        seq++;
+                        i++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                if (seq > maxSeq)
+                {
+                    maxSeq = seq;
+                }
+                seq = 1;
+            }
+            Console.WriteLine(maxSeq);
+        }
+    }
+}
