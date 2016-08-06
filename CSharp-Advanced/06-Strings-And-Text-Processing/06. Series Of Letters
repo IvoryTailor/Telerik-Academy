@@ -1,0 +1,28 @@
+namespace 06.Series_Of_Letters
+{
+    using System;
+
+    class SeriesOfLetters
+    {
+        static void Main()
+        {
+            string input = Console.ReadLine();
+            char prev = input[0];
+
+            foreach (char ch in input)
+            {
+                char curr = ch;
+                if (curr == prev)
+                {
+                    continue;
+                }
+                else
+                {
+                    Console.Write(prev);
+                }
+                prev = curr;
+            }
+            Console.WriteLine(prev);
+        }
+    }
+}
