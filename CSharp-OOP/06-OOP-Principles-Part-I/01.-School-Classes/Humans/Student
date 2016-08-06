@@ -1,0 +1,27 @@
+namespace _01_School_classes.Humans
+{
+    using System;
+
+    public class Student : People
+    {
+        private int id;
+
+        public Student(string name, int id) : base(name)
+        {
+            this.ClassId = id;
+        }
+
+        public int ClassId
+        {
+            get { return this.id; }
+            set
+            {
+                if (value<=0)
+                {
+                    throw new ArgumentOutOfRangeException("Class number can not be negative or zero!");
+                }
+                this.id = value;
+            }
+        }
+    }
+}
