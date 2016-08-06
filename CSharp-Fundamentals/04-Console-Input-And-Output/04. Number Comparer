@@ -1,0 +1,11 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        double numA = double.Parse(Console.ReadLine());
+        double numB = double.Parse(Console.ReadLine());
+        Console.WriteLine(Math.Max(numA, numB));
+    }
+}
