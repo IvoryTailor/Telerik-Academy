@@ -1,0 +1,55 @@
+namespace 03.Range_Exceptions
+{
+    using System;
+
+    public class InvalidRangeException<T> : ApplicationException
+    {
+        //FIELDS
+        private T start;
+        private T end;
+
+        //CONSTRUCTORS
+        public InvalidRangeException(string msg, T start, T end, Exception customException)
+        {
+            this.Start = start;
+            this.End = end;
+        }
+        public InvalidRangeException(string msg, T start, T end) : this(msg, start, end, null)
+        {
+
+        }
+        
+        //PROPERTIES
+        public T Start
+        {
+            get
+            {
+                return this.start;
+            }
+            set
+            {
+                if (value==null)
+                {
+                    throw new ArgumentNullException("The start value cannot be null. You should specify a start value.");
+                }
+                this.start = value;
+            }
+        }
+        public T End
+        {
+            get
+            {
+                return this.end;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("The end value cannot be null. You should specify an end value.");
+                }
+                this.end = value;
+            }
+        }
+
+    }
+}
