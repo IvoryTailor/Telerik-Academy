@@ -1,0 +1,27 @@
+namespace 01.Decimal_To_Binary
+{
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            long number = long.Parse(Console.ReadLine());
+            DecimalToBinary(number);
+        }
+
+        static void DecimalToBinary(long d)
+        {
+            string result = "";
+            while (d > 0)
+            {
+                result += d % 2 == 1 ? "1" : "0";
+                d /= 2;
+            }
+            result = result.TrimEnd(new char[] { '0' });
+            char[] binary = result.ToCharArray();
+            Array.Reverse(binary);
+            Console.WriteLine(binary);
+        }
+    }
+}
