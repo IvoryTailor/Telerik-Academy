@@ -1,0 +1,22 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        double pointX = double.Parse(Console.ReadLine());
+        double pointY = double.Parse(Console.ReadLine());
+        double centerX = 0;
+        double centerY = 0;
+        int circleRadius = 2;
+        double pointDistance = Math.Sqrt(Math.Pow(pointX - centerX, 2) + Math.Pow(pointY - centerY, 2));
+        if (pointDistance <= circleRadius)
+        {
+            Console.WriteLine("yes {0:F2}", pointDistance);
+        }
+        else
+        {
+            Console.WriteLine("no {0:F2}", pointDistance);
+        }
+    }
+}
