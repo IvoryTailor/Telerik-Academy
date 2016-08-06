@@ -1,0 +1,11 @@
+namespace 03_Animal_hierarchy.Contracts
+{
+    using Enumerations;
+
+    public interface IAnimal
+    {
+        GenderType Gender { get; set; }
+        string Name { get; set; }
+        int Age { get; set; }
+    }
+}
