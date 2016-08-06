@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        long decim = long.Parse(Console.ReadLine());
+        char[] hex = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+        List<char> hexNumber = new List<char>();
+        while (decim >= 0)
+        {
+            hexNumber.Add(hex[decim % 16]);
+            decim /= 16;
+            if (decim == 0)
+            {
+                break;
+            }
+        }
+        hexNumber.Reverse();
+        foreach (var i in hexNumber)
+        {
+            Console.Write(i);
+        }
+        Console.WriteLine();
+    }
+}
