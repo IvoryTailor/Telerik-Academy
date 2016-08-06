@@ -1,0 +1,63 @@
+using System;
+
+namespace 03.Range_Exceptions
+{
+    class TestRangeExceptions
+    {
+        static void Main(string[] args)
+        {
+            //Catch Exception
+            TestException(0, 100, 101);
+            Console.WriteLine();
+            //Value in range
+            TestException(0, 100, 59);
+            Console.WriteLine();
+            Console.WriteLine();
+
+            //Catch Exception
+            TestException(new DateTime(1980, 1, 1), new DateTime(2013, 12, 31), new DateTime(2014, 1, 1));
+            Console.WriteLine();
+            //Value in range
+            TestException(new DateTime(1980, 1, 1), new DateTime(2013, 12, 31), new DateTime(2010, 8, 19));
+        }
+
+        static void TestException(int start, int end, int inputToCheck)
+        {
+            try
+            {
+                if (inputToCheck<start||inputToCheck>end)
+                {
+                    throw new InvalidRangeException<int>("Inputed value is out of range", start, end);
+                }
+                else
+                {
+                    Console.WriteLine($"The value {inputToCheck} is in the range [{start}-{end}].");
+                }
+            }
+            catch (InvalidRangeException<int> exception)
+            {
+                Console.WriteLine(exception.Message);
+                Console.WriteLine($"The value {inputToCheck} is out of the range [{start}-{end}].");
+            }
+        }
+        static void TestException(DateTime start, DateTime end, DateTime inputToCheck)
+        {
+            try
+            {
+                if (inputToCheck < start || inputToCheck > end)
+                {
+                    throw new InvalidRangeException<DateTime>("Inputed value is out of range", start, end);
+                }
+                else
+                {
+                    Console.WriteLine($"The value {inputToCheck} is in the range [{start}-{end}].");
+                }
+            }
+            catch (InvalidRangeException<DateTime> exception)
+            {
+                Console.WriteLine(exception.Message);
+                Console.WriteLine($"The value {inputToCheck} is out of the range [{start}-{end}].");
+            }
+        }
+    }
+}
