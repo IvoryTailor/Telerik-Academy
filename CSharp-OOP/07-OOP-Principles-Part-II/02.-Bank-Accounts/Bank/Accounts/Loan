@@ -1,0 +1,33 @@
+namespace 02.BankAccounts.Bank.Accounts
+{
+    using Enumerations;
+
+    public class Loan : Account
+    {
+        //CONSTRUCTOR
+        public Loan(CustomerType customer, decimal balance, double interestRateInMonths) : base(customer, balance, interestRateInMonths)
+        {
+        }
+
+        //METHODS
+        public override double CalculateInterest(int period)
+        {
+            if (Customer==CustomerType.Individual)
+            {
+                return base.CalculateInterest(period - 3);
+            }
+            else
+            {
+                return base.CalculateInterest(period - 2);
+            }
+        }
+        public override void DepositSum(decimal sum)
+        {
+            base.DepositSum(sum);
+        }
+        public override string ToString()
+        {
+            return "Loan Account";
+        }
+    }
+}
