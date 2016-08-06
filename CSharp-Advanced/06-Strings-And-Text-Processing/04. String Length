@@ -1,0 +1,14 @@
+namespace 04.String_Length
+{
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            string inp = Console.ReadLine();
+            inp = inp.Replace(@"\", string.Empty);
+            Console.WriteLine(inp.PadRight(20, '*'));
+        }
+    }
+}
