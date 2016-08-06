@@ -1,4 +1,4 @@
-namespace _01_School_classes
+namespace 01_School_classes
 {
     using System.Collections.Generic;
     using Contracts;
