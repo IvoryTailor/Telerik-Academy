@@ -1,9 +1,0 @@
-namespace 01.StudentClass.Enumerations
-{
-    public enum FacultyType
-    {
-        Undefined = 0,
-        ComputerScience,
-        Engineering
-    }
-}
