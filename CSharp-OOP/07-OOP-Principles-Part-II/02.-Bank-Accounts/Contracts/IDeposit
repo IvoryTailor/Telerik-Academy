@@ -1,0 +1,7 @@
+namespace 02.BankAccounts.Contracts
+{
+    public interface IDeposit
+    {
+        void DepositSum(decimal sum);
+    }
+}
