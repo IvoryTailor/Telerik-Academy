@@ -1,0 +1,35 @@
+namespace 01_School_classes.Humans
+{
+    using System;
+    using Contracts;
+
+    public class People : IComment, IName
+    {
+        private string name;
+ 
+
+        public People(string comment, string name)
+        {
+            this.Comment = comment;
+        }
+
+        public People(string name) :this(null, "Vanio")
+        {
+            this.Name = name;
+        }
+
+        public string Name
+        {
+            get { return this.name; }
+            set
+            {
+                if (value==null)
+                {
+                    throw new ArgumentNullException("A person should have a name");
+                }
+                this.name = value;
+            }
+        }
+        public string Comment { get; set; }
+    }
+}
