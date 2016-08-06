@@ -1,0 +1,98 @@
+using System;
+
+namespace 03.Compare_Char_Array
+{
+    class Program
+    {
+        static void Main()
+        {
+            string input = Console.ReadLine();
+            char[] firstArr = input.ToCharArray();
+            input = Console.ReadLine();
+            char[] secondArr = input.ToCharArray();
+            bool isGreater = false;
+            bool areEqual = true;
+            if (firstArr.Length == secondArr.Length)
+            {
+                for (int i = 0; i < firstArr.Length; i++)
+                {
+
+                    if (firstArr[i] != secondArr[i])
+                    {
+                        areEqual = false;
+                        if (firstArr[i] > secondArr[i])
+                        {
+                            isGreater = true;
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                if (isGreater)
+                {
+                    Console.WriteLine(">");
+                }
+                else if (areEqual)
+                {
+                    Console.WriteLine("=");
+                }
+                else
+                {
+                    Console.WriteLine("<");
+                }
+            }
+            else if (firstArr.Length > secondArr.Length)
+            {
+                for (int i = 0; i < secondArr.Length; i++)
+                {
+                    if (firstArr[i] > secondArr[i])
+                    {
+                        Console.WriteLine(">");
+                        break;
+                    }
+                    else if (firstArr[i] < secondArr[i])
+                    {
+                        Console.WriteLine("<");
+                        break;
+                    }
+                    else
+                    {
+                        if (i == secondArr.Length-1)
+                        {
+                            Console.WriteLine(">");
+                            break;
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                for (int i = 0; i < firstArr.Length; i++)
+                {
+                    if (firstArr[i] > secondArr[i])
+                    {
+                        Console.WriteLine(">");
+                        break;
+                    }
+                    else if (firstArr[i] < secondArr[i])
+                    {
+                        Console.WriteLine("<");
+                        break;
+                    }
+                    else
+                    {
+                        if (i==firstArr.Length-1)
+                        {
+                            Console.WriteLine("<");
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
