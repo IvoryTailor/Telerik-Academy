@@ -1,0 +1,36 @@
+using System;
+
+namespace 03.64BitArray
+{
+    class TEST64BitArray
+    {
+        static void Main(string[] args)
+        {
+            var num1 = new BitArray64(29882387647);
+            var num2 = new BitArray64(16972163287612783681);
+
+            foreach (var bit in num1)
+            {
+                Console.Write(bit);
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Changing by index[63 = 0] num2:");
+            Console.WriteLine($"Before: {num2}");
+            num2[63] = 0;
+            Console.WriteLine($"After: {num2, 65}");
+            Console.WriteLine();
+
+            Console.WriteLine("Hash Code of two numbers:");
+            Console.WriteLine($"{num1.GetHashCode()}, {num2.GetHashCode()}");
+            Console.WriteLine();
+
+            Console.WriteLine("Checking equality");
+            Console.WriteLine(num1 != num2);
+            Console.WriteLine(num2.Equals(num2));
+            Console.WriteLine(num2 == num1);
+            Console.WriteLine();
+
+        }
+    }
+}
