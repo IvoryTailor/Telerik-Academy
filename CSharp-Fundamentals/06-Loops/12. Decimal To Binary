@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        long decim = long.Parse(Console.ReadLine());
+        List<char> binary = new List<char>();
+        while (decim >= 0)
+        {
+            binary.Add((decim % 2) == 0 ? '0' : '1');
+            decim /= 2;
+            if (decim == 0)
+            {
+                break;
+            }
+        }
+        binary.Reverse();
+        foreach (var i in binary)
+        {
+            Console.Write(i);
+        }
+        Console.WriteLine();
+    }
+}
