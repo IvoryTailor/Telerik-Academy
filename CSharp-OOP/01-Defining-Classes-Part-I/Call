@@ -1,0 +1,33 @@
+namespace Problem_01
+{
+    using System;
+
+    public class Call
+    {
+        public Call() : this(DateTime.MinValue) { }
+
+        public Call(DateTime setDate) : this(setDate , TimeSpan.MinValue) { }
+
+        public Call(DateTime setDate, TimeSpan setTime) : this(setDate, setTime, null) { }
+
+        public Call(DateTime setDate, TimeSpan setTime , string setDialedPhone) : this(setDate, setTime, setDialedPhone, TimeSpan.MinValue) { }
+
+        public Call(DateTime setDate, TimeSpan time, string dialedPhone, TimeSpan duration)
+        {
+            this.Date = setDate.ToShortDateString();
+            this.Time = time;
+            this.DialedPhone = dialedPhone;
+            this.Duration = duration;
+        }
+
+        public string Date { get; set; }
+
+        public TimeSpan Time { get; set; }
+
+        public string DialedPhone { get; set; }
+
+        public TimeSpan Duration { get; set; }
+
+        public override string ToString() => $"Date: {Date,13}\nTime: {Time,12}h\nNumber: {DialedPhone,11}\nDuration: {Duration}h\n";
+    }
+}
