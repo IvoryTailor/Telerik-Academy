@@ -1,0 +1,17 @@
+using System;
+using System.Numerics;
+
+class Program
+{
+    static void Main()
+    {
+        int valN = int.Parse(Console.ReadLine());
+        int valK = int.Parse(Console.ReadLine());
+        BigInteger factoriel = 1;
+        for (int i = (valK + 1); i <= valN; i++)
+        {
+            factoriel *= i;
+        }
+        Console.WriteLine(factoriel);
+    }
+}
