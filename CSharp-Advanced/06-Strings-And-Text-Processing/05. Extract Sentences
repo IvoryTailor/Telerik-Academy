@@ -1,0 +1,44 @@
+namespace 05.Extract_Sentences
+{
+    using System;
+    using System.Text;
+
+    class ExtractSentences
+    {
+        static void Main()
+        {
+            string word = Console.ReadLine();
+            string input = Console.ReadLine();
+
+            StringBuilder builder = new StringBuilder();
+
+            string[] output = input.Split(new char[] { '.', '!', '?' }, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (var sentance in output)
+            {
+                var index = sentance.IndexOf(" " + word + " ", StringComparison.Ordinal);
+                if (index != -1)
+                {
+                    var start = index;
+                    var end = index;
+                    while (true)
+                    {
+                        if (start > 0) start--;
+                        if (end < sentance.Length - 1) end++;
+
+                        if ((sentance[start] == '.' || sentance[end] == '!' || sentance[end] == '?')) break;
+                        if (Char.IsUpper(sentance[end])) break;
+
+                        if (start == 0 && end == sentance.Length - 1)
+                        {
+                            builder.Append(sentance + '.');
+                            break;
+                        }
+                    }
+                }
+            }
+            Console.WriteLine(builder.ToString());
+        }
+    }
+}
+
