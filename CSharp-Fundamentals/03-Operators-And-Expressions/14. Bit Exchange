@@ -1,0 +1,19 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        uint num1 = uint.Parse(Console.ReadLine());
+        uint mask = 1;
+        for (int i = 3; i < 6; i++)
+        {
+            if (((num1>>i)&mask)!=((num1>>(i+21))&mask))
+            {
+                num1 = num1 ^ (mask << i);
+                num1 = num1 ^ (mask << (i + 21));
+            }
+        }
+        Console.WriteLine(num1);
+    }
+}
