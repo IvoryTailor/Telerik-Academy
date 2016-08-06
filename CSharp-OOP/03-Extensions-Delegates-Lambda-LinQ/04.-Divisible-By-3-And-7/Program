@@ -1,0 +1,28 @@
+namespace _06.DivisibleBy3And7
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> list = new List<int>()
+            {
+                5,19,50,21,-4,147
+            };
+
+            var divisible = list
+                .Where(x => x%3 == 0 && x%7 == 0)
+                .Select(x => x)
+                .ToList();
+
+
+            foreach (var i in divisible)
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+}
