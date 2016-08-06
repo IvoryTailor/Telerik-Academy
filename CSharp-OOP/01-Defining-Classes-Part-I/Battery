@@ -1,0 +1,72 @@
+namespace Problem_01
+{
+    using System;
+
+   public class Battery
+    {
+        private double _hoursIdle;
+        private double _hoursTalk;
+        private BatteryType? _batteryType;
+
+        public Battery() : this(0, 0, 0)
+        {
+
+        }
+
+        public Battery(double hoursTalk) : this(0, 0, hoursTalk)
+        {
+            
+        }
+
+        public Battery(double hoursIdle, double hoursTalk) : this(0, hoursIdle, hoursTalk)
+        {
+            
+        }
+
+        public Battery(BatteryType? batteryType, double hoursIdle, double hoursTalk)
+        {
+            this.BatteryType = batteryType;
+            this.HoursIdle = hoursIdle;
+            this.HoursTalk = hoursTalk;
+        }
+
+        public double HoursIdle
+        {
+            get { return this._hoursIdle; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Hours cannot be negative!");
+                }
+                this._hoursIdle = value;
+            }
+        }
+
+        public double HoursTalk
+        {
+            get { return this._hoursTalk; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Hours should be a positive number.");
+                }
+                this._hoursTalk = value;
+            }
+        }
+
+        public BatteryType? BatteryType
+        {
+            get { return this._batteryType; }
+            set { this._batteryType = value; }
+        }
+
+        public override string ToString()
+        {
+            return string.Format($"\n\t- Battery Type: {BatteryType}\n" +
+                                 $"\t- Hours Idle {HoursIdle}\n" +
+                                 $"\t- Hours Talk {HoursTalk}");
+        }
+    }
+}
