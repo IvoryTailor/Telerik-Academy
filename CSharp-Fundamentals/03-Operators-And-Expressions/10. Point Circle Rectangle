@@ -1,0 +1,30 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        bool isInsideCircle = false;
+        bool isInsideRectangle = false;
+        double xCircle = 1;
+        double yCircle = 1;
+        double radius = 1.5;
+        double xMin = -1;
+        double xMax = 4;
+        double yMin = -1;
+        double yMax = 1;
+        double pointX = double.Parse(Console.ReadLine());
+        double pointY = double.Parse(Console.ReadLine());
+        double pointDistance = Math.Sqrt(Math.Pow(pointX - xCircle, 2) + Math.Pow(pointY - yCircle, 2));
+        if (pointDistance <= radius)
+        {
+            isInsideCircle = true;
+        }
+        Console.Write(isInsideCircle ? "inside circle " : "outside circle ");
+        if (((pointX >= xMin) && (pointX <= xMax)) && ((pointY >= yMin) && (pointY <= yMax)))
+        {
+            isInsideRectangle = true;
+        }
+        Console.WriteLine(isInsideRectangle ? "inside rectangle" : "outside rectangle");
+    }
+}
