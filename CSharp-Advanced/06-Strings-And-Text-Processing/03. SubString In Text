@@ -1,0 +1,26 @@
+namespace 03.SubString_In_Text
+{
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            string word = Console.ReadLine();
+            string input = Console.ReadLine();
+            FindSubstring(input, word);
+        }
+
+        static void FindSubstring(string inp, string w)
+        {
+            int count = 0;
+            int stringIndex = 0;
+            while (inp.IndexOf(w, stringIndex, StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                count++;
+                stringIndex = inp.IndexOf(w, stringIndex, StringComparison.OrdinalIgnoreCase) + 1;
+            }
+            Console.WriteLine(count);
+        }
+    }
+}
