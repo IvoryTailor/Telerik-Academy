@@ -1,0 +1,8 @@
+namespace 02.BankAccounts.Enumerations
+{
+    public enum CustomerType
+    {
+        Individual = 1,
+        Company = 2
+    }
+}
