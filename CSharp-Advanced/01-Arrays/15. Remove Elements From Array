@@ -1,0 +1,35 @@
+using System;
+
+namespace 15.Remove_Elements_From_Array
+{
+    class Program
+    {
+        static void Main()
+        {
+            int number = int.Parse(Console.ReadLine());
+            int[] arr = new int[number];
+            int[] subset = new int[number];
+            int biggestSub = int.MinValue;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = int.Parse(Console.ReadLine());
+                subset[i] = 1;
+            }
+            for (int i = 1; i < arr.Length; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if ((arr[i] >= arr[j]) && (subset[i] <= subset[j]))
+                    {
+                        subset[i] = subset[j] + 1;
+                    }
+                }
+                if (subset[i] > biggestSub)
+                {
+                    biggestSub = subset[i];
+                }
+            }
+            Console.WriteLine(arr.Length - biggestSub);
+        }
+    }
+}
