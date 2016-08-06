@@ -1,0 +1,35 @@
+namespace 02.BankAccounts
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Bank;
+    using Bank.Accounts;
+    using Enumerations;
+    class TestBankAccounts
+    {
+        static void Main(string[] args)
+        {
+            var accounts = new Account[]
+            {
+                new Deposit(CustomerType.Company, 5000, 5),
+                new Loan(CustomerType.Company, 10000, 7),
+                new Loan(CustomerType.Individual, 15000, 8),
+                new Mortgage(CustomerType.Individual, 25000, 15),
+                new Mortgage(CustomerType.Company, 45000, 10)
+            };
+
+            foreach (var account in accounts)
+            {
+                Console.WriteLine($"The interest rate for 12 months for a {account.ToString()} is {account.CalculateInterest(12)}%");
+            }
+
+            foreach (var account in accounts)
+            {
+                Console.WriteLine($"The interest rate for 24 months for a {account.ToString()} is {account.CalculateInterest(24)}%");
+            }
+        }
+    }
+}
