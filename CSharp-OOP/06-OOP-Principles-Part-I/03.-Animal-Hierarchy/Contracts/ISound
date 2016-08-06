@@ -1,0 +1,7 @@
+namespace 03_Animal_hierarchy.Contracts
+{
+    public interface ISound
+    {
+        void MakeSound();
+    }
+}
