@@ -1,4 +1,4 @@
-namespace _03_Animal_hierarchy.Animals
+namespace 03_Animal_hierarchy.Animals
 {
     using System;
     using Enumerations;
