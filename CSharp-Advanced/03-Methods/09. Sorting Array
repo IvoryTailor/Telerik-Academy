@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+
+namespace _09.Sorting_Array
+{
+    class Program
+    {
+        static void Main()
+        {
+            int number = int.Parse(Console.ReadLine());
+            string input = Console.ReadLine();
+            int[] array = ReadInput(input, number);
+            SortAscending(ref array);
+        }
+
+        static int[] ReadInput(string inp, int n)
+        {
+            int[] arr = Array.ConvertAll(inp.Split(
+                new[] { ' ' },
+                StringSplitOptions.RemoveEmptyEntries), int.Parse);
+            return arr;
+        }
+
+        static void GetMax(ref int[] a, int k)
+        {
+            int max = int.MinValue;
+            for (int i = 0; i <= k; i++)
+            {
+                if (a[i] > a[k])
+                {
+                    a[i]+=a[k];
+                    a[k] = a[i] - a[k];
+                    a[i] -= a[k];
+                }
+            }
+        }
+
+        static void SortAscending(ref int[] a)
+        {
+            for (int i = a.Length - 1; i > 0; i--)
+            {
+                GetMax(ref a, i);
+            }
+
+            string result = string.Join(" ", a);
+            Console.WriteLine(result);
+        }
+    }
+}
