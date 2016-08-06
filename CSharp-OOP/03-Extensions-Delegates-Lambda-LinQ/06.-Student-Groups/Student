@@ -1,0 +1,62 @@
+namespace _09_17_StudentGroupsProblems
+{
+    using System.Collections.Generic;
+    using System.Text;
+
+    public class Student
+    {
+        private readonly string firstName;
+        private readonly string lastName;
+        private readonly string fn;
+        private string telephoneNumber;
+        private string email;
+        private List<int> marks;
+        private int groupNumber;
+        private string city;
+
+        public Student(string firstName, string lastName, string fn, string telephoneNumber, string email, int groupNumber, string city, List<int> marks)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.fn = fn;
+            this.TelephoneNumber = telephoneNumber;
+            this.Email = email;
+            this.Marks = marks;
+            this.GroupNumber = groupNumber;
+            this.City = city;
+        }
+
+        public string FirstName
+        {
+            get { return this.firstName; }
+        }
+
+        public string LastName
+        {
+            get { return this.lastName; }
+        }
+
+        public string Fn
+        {
+            get { return this.fn; }
+        }
+
+        public string TelephoneNumber { get; set; }
+        public string Email { get; set; }
+        public List<int> Marks { get; set; }
+        public int GroupNumber { get; set; }
+        public string City { get; set; }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine($"{FirstName} {LastName}");
+            sb.AppendLine($"Group: {GroupNumber}");
+            sb.AppendLine($"FN: {Fn}");
+            sb.AppendLine($"Email: {Email}");
+            sb.AppendLine($"Telephone: {TelephoneNumber}");
+            sb.AppendLine($"City: {City}");
+            return sb.ToString();
+        }
+    }
+}
