@@ -1,0 +1,54 @@
+namespace 03_Animal_hierarchy.Animals
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Contracts;
+    using Enumerations;
+
+    public abstract class Animal : ISound, IAnimal
+    {
+        private  string name;
+        private  int age;
+
+        protected Animal(string name, int age, GenderType gender)
+        {
+            this.Name = name;
+            this.Age = age;
+            this.Gender = gender;
+        }
+
+        public GenderType Gender { get; set; }
+        public string Name
+        {
+            get { return this.name; }
+            set
+            {
+                if (value.Length < 3)
+                {
+                    throw new ArgumentOutOfRangeException("The name of your animal should have at least three letters");
+                }
+                this.name = value;
+            }
+        }
+        public int Age
+        {
+            get { return this.age; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("Your animal's age cannot be 0 or a negative number");
+                }
+                this.age = value;
+            }
+        }
+
+        public abstract void MakeSound();
+        //    public static void Average (List<Animal> animals)
+        //    {
+        //        var avarageAge = animals.Sum(x => x.Age) / (double)animals.Count;
+        //        Console.WriteLine("Avarage age: " + avarageAge);
+        //    }
+    }
+}
