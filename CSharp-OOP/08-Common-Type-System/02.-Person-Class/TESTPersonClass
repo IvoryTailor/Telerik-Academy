@@ -1,0 +1,24 @@
+using System;
+
+namespace 02.Person_Class
+{
+    class TESTPersonClass
+    {
+        static void Main(string[] args)
+        {
+            var people = new Person[]
+            {
+                new Person("Pesho", 22),
+                new Person("Gosho", 23),
+                new Person("Minka", 18),
+                new Person("Mariika", 42),
+                new Person("Tosho", null)
+            };
+
+            foreach (var person in people)
+            {
+                Console.WriteLine(person);
+            }
+        }
+    }
+}
