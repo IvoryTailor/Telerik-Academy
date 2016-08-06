@@ -1,0 +1,17 @@
+namespace 03_Animal_hierarchy
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Animals;
+
+    public static class AverageExtenssion
+    {
+        public static void Averageh(this List<Animal> animals)
+        {
+            var avarageAge = animals.Sum(x => x.Age) / (double)animals.Count;
+            Console.WriteLine("Avarage age: " + avarageAge);
+        }
+
+    }
+}
