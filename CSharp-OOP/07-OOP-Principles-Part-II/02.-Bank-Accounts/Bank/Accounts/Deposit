@@ -1,0 +1,44 @@
+namespace 02.BankAccounts.Bank.Accounts
+{
+    using System;
+    using Enumerations;
+    using Contracts;
+
+    public class Deposit : Account, IWithdraw
+    {
+        //CONSTRUCTOR
+        public Deposit(CustomerType customer, decimal balance, double interestRateInMonths) : base(customer, balance, interestRateInMonths)
+        {
+        }
+
+        //METHODS
+        public override double CalculateInterest(int period)
+        {
+            if (Balance>0 && Balance<1000)
+            {
+                return 0;
+            }
+            return base.CalculateInterest(period);
+        }
+        public override void DepositSum(decimal sum)
+        {
+            base.DepositSum(sum);
+        }
+        public void WithdrawSum(decimal sum)
+        {
+            if (sum < 0)
+            {
+                throw new ArgumentOutOfRangeException("Sum should have a positive value.");
+            }
+            if (Balance<sum)
+            {
+                throw new ArgumentOutOfRangeException($"When your balance is: {Balance:C}, you cannot withdraw {sum}");
+            }
+            Balance -= sum;
+        }
+        public override string ToString()
+        {
+            return "Deposit Account";
+        }
+    }
+}
