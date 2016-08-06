@@ -1,0 +1,184 @@
+namespace _09_17_StudentGroupsProblems
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var students = new Student[]
+            {
+                new Student("Pesho", "Peshev", "210105", "0895122345", "pesho@abv.bg", 1, "Sofia",new List<int>()
+                {
+                    2, 3, 6, 6, 5
+                }),
+                new Student("Tosho", "Toshev", "210206", "0896126375", "tosho@gmail.com", 1, "Sofia",new List<int>()
+                {
+                    2, 3, 4, 4, 5
+                }),
+                new Student("Gosho", "Goshev", "210305", "0895132365", "gosho@gmail.com", 2, "Pernik",new List<int>()
+                {
+                    2, 3, 4, 3, 2
+                }),
+                new Student("Misho", "Mishev", "210406", "0897125355", "misho@abv.bg", 1, "Pernik",new List<int>()
+                {
+                    2, 4, 2, 3, 2
+                }),
+                new Student("Kiro", "Kirev", "210506", "0897121343", "kiro@abv.bg", 2, "Pernik",new List<int>()
+                {
+                    5, 4, 6, 6, 6
+                }),
+                new Student("Mariika", "Mariikova", "210605", "0895122345", "mariika@abv.bg", 1, "Pernik",new List<int>()
+                {
+                    6, 6, 6, 6, 6
+                }),
+                new Student("Minka", "Minkova", "210705", "0898835943", "minka@gmail.com", 1, "Sofia",new List<int>()
+                {
+                    6, 6, 6, 6, 6
+                }),
+                new Student("Ginka", "Ginkova", "210806", "0895634294", "ginka@abv.bg", 2, "Pernik",new List<int>()
+                {
+                    4, 3, 4, 6, 6
+                }),
+                new Student("Penka", "Penkova", "210905", "0899532863", "penka@gmail.com", 2, "Sofia",new List<int>()
+                {
+                    2, 2, 6, 4, 6
+                }),
+                new Student("Ganka", "Gankova", "211006", "0899231852", "ganka@gmail.com", 2, "Sofia",new List<int>()
+                {
+                    6, 5, 6, 6, 5
+                }),
+            };
+
+            //09. Student groups
+            var groupTwo =
+                from stud in students
+                where stud.GroupNumber == 2
+                orderby stud.FirstName
+                select new
+                {
+                    FirstName = stud.FirstName,
+                    LastName = stud.LastName
+                };
+
+            foreach (var group in groupTwo)
+            {
+                Console.WriteLine(group);
+            }
+            Console.WriteLine();
+
+            //10. Student groups extensions
+            foreach (var student in students.FindByGroupNumber())
+            {
+                Console.WriteLine(student);
+            }
+            Console.WriteLine();
+
+            //11. Extract students by email
+            var byEmail =
+                from stud in students
+                where (stud.Email.Contains("@abv"))
+                select new
+                {
+                    FirstName = stud.FirstName,
+                    LastName = stud.LastName
+                };
+
+            foreach (var student in byEmail)
+            {
+                Console.WriteLine(student);
+            }
+            Console.WriteLine();
+
+            //12. Extract students by phone
+            var fromSofia =
+                from stud in students
+                where (stud.City.Equals("Sofia"))
+                select stud;
+
+            foreach (var student in fromSofia)
+            {
+                Console.WriteLine(student);
+            }
+            Console.WriteLine();
+            //13. Extract students by marks
+            var excellentMark =
+                from stud in students
+                where (stud.Marks.Contains(6))
+                select new
+                {
+                    FirstName = stud.FirstName,
+                    Marks = stud.Marks
+                };
+            foreach (var student in excellentMark)
+            {
+                Console.Write(student.FirstName + " - ");
+                foreach (var item in student.Marks)
+                {
+                    Console.Write(item + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            //14. Extract students with two marks
+            var withTwoTwos =
+                from stud in students
+                where (stud.Marks.FindAll(x=>x==2).Count == 2)
+                select new
+                {
+                    FirstName = stud.FirstName,
+                    Marks = stud.Marks
+                };
+            foreach (var student in withTwoTwos)
+            {
+                Console.Write(student.FirstName + " - ");
+                foreach (var item in student.Marks)
+                {
+                    Console.Write(item + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            //15. Extract marks
+            var enrolledInZeroSix =
+                from stud in students
+                where (stud.Fn.Substring(4)=="06")
+                select new
+                {
+                    FirstName = stud.FirstName,
+                    Marks = stud.Marks
+                };
+            foreach (var student in enrolledInZeroSix)
+            {
+                Console.Write(student.FirstName + " - ");
+                foreach (var item in student.Marks)
+                {
+                    Console.Write(item + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            //18. Grouped by GroupNumber
+            var showByGroup =
+                from stud in students
+                orderby stud.GroupNumber
+                select stud;
+
+            foreach (var student in showByGroup)
+            {
+                Console.WriteLine(student);
+            }
+            Console.WriteLine();
+
+            Console.WriteLine();
+            //19. Grouped by GroupName extensions
+            var collection = students.OrderByGroupNumber();
+            foreach (var student in collection)
+            {
+                Console.WriteLine(student);
+            }
+        }
+    }
+}
