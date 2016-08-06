@@ -1,0 +1,27 @@
+namespace 04.Triangle_Surface_By_2_Sides
+{
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            double sideA = double.Parse(Console.ReadLine());
+            double sideB = double.Parse(Console.ReadLine());
+            double angle = double.Parse(Console.ReadLine());
+            Surface(sideA, sideB, DegreesToRadians(angle));
+        }
+
+        static void Surface(double a, double b, double d)
+        {
+            double surface = a * b * Math.Sin(d) / 2;
+            Console.WriteLine("{0:F2}", surface);
+        }
+
+        static double DegreesToRadians(double degree)
+        {
+            double radians = degree*Math.PI/180;
+            return radians;
+        }
+    }
+}
