@@ -1,0 +1,36 @@
+namespace 02.Correct_Brackets
+{
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            string input = Console.ReadLine();
+            CheckBrackets(ref input);
+        }
+
+        static void CheckBrackets(ref string inp)
+        {
+            int count = 0;
+            foreach (char t in inp)
+            {
+                if (t=='(')
+                {
+                    count++;
+                }else if (t==')')
+                {
+                    count--;
+                }
+            }
+            if (count>0||count<0)
+            {
+                Console.WriteLine("Incorrect");
+            }
+            else
+            {
+                Console.WriteLine("Correct");
+            }
+        }
+    }
+}
