@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+    <table border="1" width="300px" height="400px"  align="center" cellpadding="10px" style="font-size: 35px; color: ">
+        <tr>
+            <td colspan="4" align="right">123</td>
+        </tr>
+        <tr>
+            <td align="center">1</td>
+            <td align="center">2</td>
+            <td align="center">3</td>
+            <td align="center">+</td>
+        </tr>
+        <tr>
+            <td align="center">4</td>
+            <td align="center">5</td>
+            <td align="center">6</td>
+            <td align="center">-</td>
+        </tr>
+        <tr>
+            <td align="center">7</td>
+            <td align="center">8</td>
+            <td align="center">9</td>
+            <td align="center">*</td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">0</td>
+            <td align="center">.</td>
+            <td align="center">/</td>
+        </tr>
+    </table>
+</body>
+</html>
