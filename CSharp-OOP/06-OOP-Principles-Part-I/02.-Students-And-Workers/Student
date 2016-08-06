@@ -1,0 +1,23 @@
+namespace 02_Students_And_Workers
+{
+    using System.Text;
+
+    public class Student : Human
+    {
+        private double grade;
+
+        public Student(string firstName, string lastName, double grade) : base(firstName, lastName)
+        {
+            this.grade = grade;
+        }
+
+        public double Grade => this.grade;
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.Append($"{FirstName} {LastName} - {Grade}");
+            return sb.ToString();
+        }
+    }
+}
