@@ -1,0 +1,186 @@
+namespace Problem_01
+{
+    using System;
+    using System.Collections.Generic;
+
+    public class GSM
+    {
+        private string _model;
+        private string _manufacturer;
+        private decimal _price;
+        private string _owner;
+        private Battery _battery;
+        private Display _display;
+        private static readonly GSM _iPhone4S = new GSM("iPhone 4S", "Apple", 450, "Pesho", new Battery(BatteryType.LiIon, 50, 30), new Display(50, 16777000));
+        private List<Call> _callHistory = new List<Call>(); 
+
+        public GSM(string model, string manufacturer) : this(model, manufacturer, 0, null, new Battery(0, 0, 0), new Display(0, 0))
+        {
+
+        }
+
+        public GSM(string model, string manufacturer, decimal price) : this(model, manufacturer, price, null, new Battery(0, 0, 0), new Display(0, 0))
+        {
+
+        }
+
+        public GSM(string model, string manufacturer, decimal price, string owner) : this(model, manufacturer, price, owner, new Battery(0, 0, 0), new Display(0, 0))
+        {
+
+        }
+
+        public GSM(string model, string manufacturer, decimal price, string owner, Battery battery) : this(model, manufacturer, price, owner, battery, new Display(0, 0))
+        {
+
+        }
+
+        public GSM(string model, string manufacturer, decimal price, string owner, Battery battery, Display display)
+        {
+            this.Model = model;
+            this.Manufacturer = manufacturer;
+            this.Price = price;
+            this.Owner = owner;
+            this.Battery = battery;
+            this.Display = display;
+        }
+
+        public string Model
+        {
+            get { return this._model; }
+            set
+            {
+                if (value.Length < 3)
+                {
+                    throw new ArgumentOutOfRangeException("Model name is too short! Should be at least 3 characters.");
+                }
+                else if (value.Length > 20)
+                {
+                    throw new ArgumentOutOfRangeException("Model name is too long! It should be less than 10 characters.");
+                }
+                else if (value == String.Empty)
+                {
+                    throw new ArgumentNullException("You must actually specify a model");
+                }
+                this._model = value;
+            }
+        }
+
+        public string Manufacturer
+        {
+            get { return this._manufacturer; }
+            set
+            {
+                if (value.Length < 5)
+                {
+                    throw new ArgumentOutOfRangeException("Manufacturer name is too short! Should be at least 5 characters.");
+                }
+                else if (value.Length > 10)
+                {
+                    throw new ArgumentOutOfRangeException("Manufacturer name is too long! It should be less than 30 characters.");
+                }
+                else if (value == String.Empty)
+                {
+                    throw new ArgumentNullException("You must specify a manufacturer!");
+                }
+                this._manufacturer = value;
+            }
+        }
+
+        public decimal Price
+        {
+            get { return this._price; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Price cannot be a negative value!");
+                }
+                this._price = value;
+            }
+        }
+
+        public string Owner
+        {
+            get { return _owner; }
+            set
+            {
+                if (value.Length < 4)
+                {
+                    throw new ArgumentOutOfRangeException("Owner name is too short! Should be at least 4 characters.");
+                }
+                else if (value.Length > 10)
+                {
+                    throw new ArgumentOutOfRangeException("Owner name is too long! It should be less than 10 characters.");
+                }
+                this._owner = value;
+            }
+        }
+
+        public Battery Battery
+        {
+            get { return _battery; }
+            set { this._battery = value; }
+        }
+
+        public Display Display
+        {
+            get { return _display; }
+            set { this._display = value; }
+        }
+
+        public static GSM IPhone4S
+        {
+            get { return _iPhone4S; }
+        }
+
+        public List<Call> CallHistory
+        {
+            get { return this._callHistory; }
+            set { this._callHistory = value; }
+        }
+
+        public override string ToString()
+        {
+            return
+                $"Model: {Model}\n" +
+                $"Manufacturer: {Manufacturer}\n" +
+                $"Price: {Price:C}\n" +
+                $"Owner:{Owner}\n" +
+                $"Battery: {Battery}\n" +
+                $"Display: {Display}\n";
+        }
+
+        public void AddCall(DateTime date, TimeSpan time, string dialedNumber, TimeSpan duration)
+        {
+            this.CallHistory.Add(new Call(date, time, dialedNumber, duration));
+        }
+
+        public void DeleteCall(int number)
+        {
+            if (number > this.CallHistory.Count)
+            {
+                throw new ArgumentOutOfRangeException("The number is not in the history.");
+            }
+            this.CallHistory.RemoveAt(number);
+        }
+
+        public void ClearCallHistory()
+        {
+            this.CallHistory.Clear();
+        }
+
+        public void CallPrice(decimal price)
+        {
+            var totalCallPrice = 0m;
+            for (int i = 0; i < this.CallHistory.Count; i++)
+            {
+                //get total call price for each call in callHistory(in minutes), multiplied by price
+                totalCallPrice += (this.CallHistory[i].Duration.Days*24*60 +
+                                  this.CallHistory[i].Duration.Hours*60*60 +
+                                  this.CallHistory[i].Duration.Minutes +
+                                  this.CallHistory[i].Duration.Seconds/60)*price;
+            }
+            Console.WriteLine($"Price for all calls in history: {totalCallPrice:C}");
+        }
+    }
+}
