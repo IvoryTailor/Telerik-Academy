@@ -1,4 +1,4 @@
-namespace _01_School_classes.Contracts
+namespace 01_School_classes.Contracts
 {
     public interface IComment
     {
