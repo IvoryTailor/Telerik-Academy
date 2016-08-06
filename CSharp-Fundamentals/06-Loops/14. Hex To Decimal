@@ -1,0 +1,19 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string hex = Console.ReadLine();
+        char[] hexNumber = hex.ToCharArray();
+        Array.Reverse(hexNumber);
+        char[] hexDigits = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+        long decim = 0;
+        for (int i = 0; i < hexNumber.Length; i++)
+        {
+            long temp = Array.IndexOf(hexDigits, hexNumber[i]);
+            decim += (long)(temp * (Math.Pow(16, i)));
+        }
+        Console.WriteLine(decim);
+    }
+}
