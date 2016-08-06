@@ -1,0 +1,24 @@
+namespace Problem_01
+{
+    using System;
+
+   public class GsmTests
+    {
+        public static void GsmTest()
+        {
+            GSM[] phones =
+            {
+                new GSM("Galaxy S7 Edge", "Samsung", 700, "Ivcho", new Battery(BatteryType.LiIon,0, 24 ), new Display(5.5, 16000000)),
+                new GSM("Vibe K4 Note", "Lenovo", 650, "Toshko", new Battery(BatteryType.LiPo, 400, 23), new Display(5.5, 15000000)),
+                new GSM("Lumia 520", "Nokia", 500, "Svetlio", new Battery(BatteryType.LiIon, 300, 15), new Display(4, 15000000)),
+            };
+
+            foreach (var gsm in phones)
+            {
+                Console.WriteLine(gsm);
+            }
+
+            Console.WriteLine(GSM.IPhone4S);
+        }
+    }
+}
