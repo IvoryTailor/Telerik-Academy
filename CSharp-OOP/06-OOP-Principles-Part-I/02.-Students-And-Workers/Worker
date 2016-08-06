@@ -1,0 +1,61 @@
+namespace 02_Students_And_Workers
+{
+    using System;
+    using System.Text;
+
+    public class Worker : Human
+    {
+        private decimal weekSalary;
+        private double weekHoursPerDay;
+        private decimal moneyPerHour;
+
+        public Worker(string firstName, string lastName, decimal weekSalary, double weekHoursPerDay) : base(firstName, lastName)
+        {
+            this.WeekSalary = weekSalary;
+            this.WeekHoursPerDay = weekHoursPerDay;
+            this.SalaryPerHour = MoneyPerHour(weekSalary, weekHoursPerDay);
+        }
+
+        public decimal WeekSalary
+        {
+            get { return this.weekSalary; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("Salary cannot be less than or equal to 0");
+                }
+                this.weekSalary = value;
+            }
+        }
+        public double WeekHoursPerDay
+        {
+            get { return this.weekHoursPerDay; }
+            set
+            {
+                if (value < 0 || value > 24)
+                {
+                    throw new ArgumentOutOfRangeException("The day must have value between zero and 24 hours");
+                }
+                this.weekHoursPerDay = value;
+            }
+        }
+        public decimal SalaryPerHour
+        {
+            get { return this.moneyPerHour; }
+            set { this.moneyPerHour = value; }
+        }
+
+        public decimal MoneyPerHour(decimal weekSalary, double weekHoursPerDay)
+        {
+            moneyPerHour = (((decimal)((weekHoursPerDay*24)*7)) / weekSalary);
+            return moneyPerHour;
+        }
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.Append($"{FirstName} {LastName} - {SalaryPerHour:C}");
+            return sb.ToString();
+        }
+    }
+}
