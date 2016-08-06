@@ -1,0 +1,11 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        double valA = double.Parse(Console.ReadLine());
+        double valB = double.Parse(Console.ReadLine());
+        Console.WriteLine("{0} {1}", Math.Min(valA, valB), Math.Max(valA, valB));
+    }
+}
