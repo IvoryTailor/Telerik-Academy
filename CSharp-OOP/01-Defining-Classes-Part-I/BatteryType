@@ -1,0 +1,11 @@
+namespace Problem_01
+{
+    public enum BatteryType
+    {
+        Undefined = 0,
+        LiIon = 1,
+        NimH = 2,
+        NiCd = 3,
+        LiPo = 4
+    }
+}
