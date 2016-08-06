@@ -1,0 +1,20 @@
+using System;
+using System.Text.RegularExpressions;
+
+class Program
+{
+    static void Main()
+    {
+        string input = Console.ReadLine();
+        string[] digits = input.Split();
+        int valA = Math.Abs(Convert.ToInt32(digits[0]));
+        int valB = Math.Abs(Convert.ToInt32(digits[1]));
+        while ((valA != 0) && (valB != 0))
+        {
+            int temp = valB;
+            valB = valA % valB;
+            valA = temp;
+        }
+        Console.WriteLine("{0}", valA == 0 ? valB : valA);
+    }
+}
