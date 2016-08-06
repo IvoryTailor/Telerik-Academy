@@ -1,0 +1,28 @@
+namespace _09_17_StudentGroupsProblems
+{
+    using System.Collections;
+    using System.Linq;
+
+    public static class Extensions
+    {
+        public static IEnumerable FindByGroupNumber(this Student[] students )
+        {
+            var result =
+                from stud in students
+                where stud.GroupNumber == 2
+                orderby stud.FirstName
+                select stud;
+            return result;
+        }
+
+        public static IEnumerable OrderByGroupNumber(this  Student[] students)
+        {
+            var result =
+                from stud in students
+                orderby stud.GroupNumber
+                select stud;
+            return result;
+
+        }
+    }
+}
