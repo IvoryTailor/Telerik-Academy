@@ -1,0 +1,19 @@
+namespace 01_StringBuilderSubstring
+{
+    using System.Text;
+
+    public static class Extensions
+    {
+        public static StringBuilder Substring(this StringBuilder sb, int pos, int length)
+        {
+            StringBuilder sub=new StringBuilder();
+            while (length>0)
+            {
+                sub.Append(sb[pos]);
+                pos++;
+                length--;
+            }
+            return sub;
+        }
+    }
+}
