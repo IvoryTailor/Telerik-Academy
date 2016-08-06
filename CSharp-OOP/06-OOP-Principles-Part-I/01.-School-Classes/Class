@@ -1,0 +1,55 @@
+namespace _01_School_classes
+{
+    using System.Collections.Generic;
+    using Contracts;
+    using Humans;
+
+    public class Class : IComment
+    {
+        private List<Student> students;
+        private List<Teacher> teachers;
+
+        public Class(string id)
+        {
+            this.Id = id;
+            this.Students=new List<Student>();
+            this.Teachers=new List<Teacher>();
+        }
+
+        public Class(string id, string comment) : this(id)
+        {
+            this.Comment = comment;
+        }
+
+        public string Id { get; set; }
+        public List<Student> Students
+        {
+            get
+            {
+                return new List<Student>(this.students);
+            }
+            set { this.students = value; }
+        }
+        public List<Teacher> Teachers
+        {
+            get
+            {
+                return new List<Teacher>(this.teachers);
+            }
+            set { this.teachers = value; }
+        }
+        public string Comment { get; set; }
+
+
+        public void AddStudent(Student student)
+        {
+            this.students.Add(student);
+        }
+        public void AddTeacher(Teacher teacher)
+        {
+            this.teachers.Add(teacher);
+        }
+
+
+    }
+}
