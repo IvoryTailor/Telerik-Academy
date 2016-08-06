@@ -1,0 +1,18 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int valN = int.Parse(Console.ReadLine());
+        double valX = double.Parse(Console.ReadLine());
+        double sum = 1;
+        long factorielN = 1;
+        for (int i = 1; i <= valN; i++)
+        {
+            factorielN *= i;
+            sum += (factorielN / (Math.Pow(valX, i)));
+        }
+        Console.WriteLine("{0:F5}", sum);
+    }
+}
