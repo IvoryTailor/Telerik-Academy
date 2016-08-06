@@ -1,4 +1,4 @@
-namespace _06.DivisibleBy3And7
+namespace 04.DivisibleBy3And7
 {
     using System;
     using System.Collections.Generic;
