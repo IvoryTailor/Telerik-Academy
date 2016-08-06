@@ -1,0 +1,10 @@
+namespace 01.StudentClass.Enumerations
+{
+    public enum SpecialtyType
+    {
+        Undefined = 0,
+        SoftwareEngineer,
+        MechanicalEngineer,
+        ElectricalEngineer
+    }
+}
