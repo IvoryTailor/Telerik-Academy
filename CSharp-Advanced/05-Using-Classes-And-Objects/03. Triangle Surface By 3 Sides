@@ -1,0 +1,26 @@
+namespace 03.Triangle_Surface_By_3_Sides
+{
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            double sideA = double.Parse(Console.ReadLine());
+            double sideB = double.Parse(Console.ReadLine());
+            double sideC = double.Parse(Console.ReadLine());
+            Surface(sideA, sideB, sideC);
+        }
+
+        static void Surface(double a, double b, double c)
+        {
+            double halfPerim = (a + b + c) / 2;
+            double surface = Math.Sqrt(
+                                        halfPerim *
+                                        (halfPerim - a) *
+                                        (halfPerim - b) *
+                                        (halfPerim - c));
+            Console.WriteLine("{0:F2}", surface);
+        }
+    }
+}
