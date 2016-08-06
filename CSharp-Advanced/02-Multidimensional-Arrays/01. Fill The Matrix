@@ -1,0 +1,189 @@
+using System;
+
+namespace 01.Fill_The_Matrix
+{
+    class Program
+    {
+        static void Main()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int[,] matrix = new int[n, n];
+            int row = 0;
+            int col = 0;
+            int direction = 0;
+            int count = 1;
+            int step = 1;
+            char style = char.Parse(Console.ReadLine());
+            switch (style)
+            {
+                case 'a':
+                    for (int i = 1; i <= n * n; i++)
+                    {
+
+                        if (row < n)
+                        {
+                            matrix[row, col] = i;
+                            row++;
+                        }
+                        else
+                        {
+                            col++;
+                            row = 0;
+                            matrix[row, col] = i;
+                            row++;
+                        }
+                    }
+                    break;
+                case 'b':
+                    for (int i = 1; i <= n * n; i++)
+                    {
+                        if (row == n)
+                        {
+                            direction = 1;
+                            col++;
+                            row--;
+                        }
+                        else if (row == -1)
+                        {
+                            direction = 0;
+                            col++;
+                            row++;
+                        }
+                        switch (direction)
+                        {
+                            case 0:
+
+                                matrix[row, col] = i;
+                                if (row <= n)
+                                {
+                                    row++;
+                                }
+
+                                break;
+                            case 1:
+
+                                matrix[row, col] = i;
+                                if (row >= 0)
+                                {
+                                    row--;
+                                }
+
+                                break;
+                        }
+                    }
+                    break;
+                case 'c':
+                    for (int i = 1; i <= n * n; i++)
+                    {
+                        if (step == n + 1)
+                        {
+                            step--;//4
+                            direction = 1;
+                            count = step - 1;//3
+                        }
+                        bool isFirst = true;
+                        switch (direction)
+                        {
+                            case 0:
+                                while (count > 0)
+                                {
+                                    if (isFirst)
+                                    {
+                                        row = n - count;
+                                        col = 0;
+                                        matrix[row, col] = i;
+                                        isFirst = false;
+                                        count--;
+                                    }
+                                    else
+                                    {
+                                        row++;
+                                        col++;
+                                        i++;
+                                        matrix[row, col] = i;
+                                        count--;
+                                    }
+                                }
+                                step++;
+                                count = step;
+                                break;
+                            case 1:
+                                while (count > 0)
+                                {
+                                    if (isFirst)
+                                    {
+                                        row = row - count;
+                                        col = col - (count - 1);
+                                        isFirst = false;
+                                        matrix[row, col] = i;
+                                        count--;
+                                    }
+                                    else
+                                    {
+                                        row++;
+                                        col++;
+                                        i++;
+                                        matrix[row, col] = i;
+                                        count--;
+                                    }
+                                }
+                                step--;
+                                count = step - 1;
+                                break;
+                        }
+                    }
+                    break;
+                case 'd':
+                    step = 0;
+                    for (int i = 1, j = 0; i <= n * n; i++)//row=0,col=0,count=1,direction=0
+                    {
+                        matrix[row, col] = i;
+                        step++;
+                        if (step == n - j)
+                        {
+                            step = 0;
+                            count++;
+                            direction++;
+                        }
+                        if (count == 2)
+                        {
+
+                            count = 0;
+                            j++;
+                        }
+                        switch (direction % 4)
+                        {
+                            case 0:
+                                row++;
+                                break;
+                            case 1:
+                                col++;
+                                break;
+                            case 2:
+                                row--;
+                                break;
+                            case 3:
+                                col--;
+                                break;
+                        }
+                    }
+                    break;
+            }
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (j == n - 1)
+                    {
+                        Console.Write(matrix[i, j]);
+                    }
+                    else
+                    {
+                        Console.Write("{0} ", matrix[i, j]);
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
