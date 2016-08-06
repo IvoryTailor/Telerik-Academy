@@ -1,0 +1,20 @@
+namespace _02.Reverse_String
+{
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            string input = Console.ReadLine();
+            ReverseString(input);
+        }
+
+        static void ReverseString(string inp)
+        {
+            char[] reversed = inp.ToCharArray();
+            Array.Reverse(reversed);
+            Console.WriteLine(reversed);
+        }
+    }
+}
