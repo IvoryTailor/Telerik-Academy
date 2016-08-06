@@ -1,0 +1,13 @@
+namespace 10.Replace_Tags
+{
+    using System;
+    using System.Text.RegularExpressions;
+
+    class ReplaceTags
+    {
+        static void Main()
+        {
+            Console.WriteLine(Regex.Replace(Console.ReadLine(), "(<a href=\")(.*?)(\">)(.*?)(</a>)", "[$4]($2)"));
+        }
+    }
+}
