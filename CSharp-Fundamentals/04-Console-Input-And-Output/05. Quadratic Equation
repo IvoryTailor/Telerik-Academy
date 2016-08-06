@@ -1,0 +1,28 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        double numA = double.Parse(Console.ReadLine());
+        double numB = double.Parse(Console.ReadLine());
+        double numC = double.Parse(Console.ReadLine());
+        double determinant = (Math.Pow(numB, 2) - (4 * numA * numC));
+        if (determinant > 0)
+        {
+            double root1 = (-(numB) - Math.Sqrt(determinant)) / (2 * numA);
+            double root2 = (-(numB) + Math.Sqrt(determinant)) / (2 * numA);
+            Console.WriteLine("{0:F2}", Math.Min(root1, root2));
+            Console.WriteLine("{0:F2}", Math.Max(root1, root2));
+        }
+        else if (determinant == 0)
+        {
+            double root = (-(numB)) / (2 * numA);
+            Console.WriteLine("{0:F2}", root);
+        }
+        else
+        {
+            Console.WriteLine("no real roots");
+        }
+    }
+}
