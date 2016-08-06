@@ -1,0 +1,34 @@
+using System;
+using System.Numerics;
+
+class Program
+{
+    static void Main()
+    {
+        int valN = int.Parse(Console.ReadLine());
+        string input = Console.ReadLine();
+        string[] values = input.Split();
+        BigInteger productOdd = 1;
+        BigInteger productEven = 1;
+        for (int i = 0; i < valN; i++)
+        {
+            int temp = Convert.ToInt32(values[i]);
+            if ((i % 2) == 0)
+            {
+                productOdd *= temp;
+            }
+            else
+            {
+                productEven *= temp;
+            }
+        }
+        if (productOdd == productEven)
+        {
+            Console.WriteLine("yes {0}", productOdd);
+        }
+        else
+        {
+            Console.WriteLine("no {0} {1}", productOdd, productEven);
+        }
+    }
+}
