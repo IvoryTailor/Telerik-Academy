@@ -1,0 +1,36 @@
+using System;
+
+namespace _05.Larger_Than_Neighbours
+{
+    class Program
+    {
+        static void Main()
+        {
+            int number = int.Parse(Console.ReadLine());
+            string input = Console.ReadLine();
+            int[] array = ReadInput(input, number);
+            CheckNeighbours(array);
+        }
+
+        static int[] ReadInput(string inp, int n)
+        {
+            int[] arr = Array.ConvertAll(inp.Split(
+                new[] { ' ' },
+                StringSplitOptions.RemoveEmptyEntries), int.Parse);
+            return arr;
+        }
+
+        static void CheckNeighbours(int[] arr)
+        {
+            int count = 0;
+            for (int i = 1; i < arr.Length - 1; i++)
+            {
+                if ((arr[i] > arr[i - 1]) && (arr[i] > arr[i + 1]))
+                {
+                    count++;
+                }
+            }
+            Console.WriteLine(count);
+        }
+    }
+}
