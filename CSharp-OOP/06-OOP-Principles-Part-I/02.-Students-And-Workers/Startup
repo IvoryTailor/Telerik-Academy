@@ -1,0 +1,73 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace 02_Students_And_Workers
+{
+    class Startup
+    {
+        static void Main(string[] args)
+        {
+            List<Student> students = new List<Student>()
+            {
+                new Student("Pesho", "Nedkov", 6),
+                new Student("Tosho", "Colov", 4),
+                new Student("Svetlio", "Marov", 3),
+                new Student("Misho", "Stefkov", 2),
+                new Student("Kiro", "Verkov", 3),
+                new Student("Penka", "Bobchova", 4),
+                new Student("Marijka", "Koliova", 6),
+                new Student("Ganka", "Goshova", 5),
+                new Student("Minka", "Vaniova", 4),
+                new Student("Ginka", "Timchova", 5),
+            };
+            List<Worker> workers = new List<Worker>()
+            {
+                new Worker("Timcho", "Ginkov", 130, 8),
+                new Worker("Vanio", "Minkov", 150, 6),
+                new Worker("Gosho", "Gankov", 140, 8),
+                new Worker("Kolio", "Marijkov", 125, 4),
+                new Worker("Bobcho", "Penkov", 150, 12),
+                new Worker("Verka", "Kirova", 135, 10),
+                new Worker("Stefka", "Mishova", 160, 12),
+                new Worker("Mara", "Svetoslavova", 175, 15),
+                new Worker("Cola", "Toshova", 290, 20),
+                new Worker("Nedka", "Peshova", 225, 2),
+            };
+
+            //Sort Students Ascending by Grade
+            var byGrades =
+                from student in students
+                orderby student.Grade
+                select student;
+            foreach (var student in byGrades)
+            {
+                Console.WriteLine(student);
+            }
+            Console.WriteLine();
+            //Sort Workers Descending by salary for an hour
+            var bySalary =
+                from worker in workers
+                orderby worker.SalaryPerHour descending
+                select worker;
+            foreach (var worker in bySalary)
+            {
+                Console.WriteLine(worker);
+            }
+            Console.WriteLine();
+            //Merge two lists and order them by first name
+            List<Human> people = new List<Human>(students);
+            people.AddRange(workers.Cast<Human>());
+            var byFirstName =
+                from human in people
+                orderby human.FirstName, human.LastName
+                select human;
+            foreach (var human in byFirstName)
+            {
+                Console.WriteLine(human);
+            }
+        }
+    }
+}
