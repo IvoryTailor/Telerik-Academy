@@ -1,0 +1,12 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        ulong number = ulong.Parse(Console.ReadLine());
+        int position = int.Parse(Console.ReadLine());
+        ulong mask = 1ul<<position;
+        Console.WriteLine((number&mask)==0?"0":"1");
+    }
+}
