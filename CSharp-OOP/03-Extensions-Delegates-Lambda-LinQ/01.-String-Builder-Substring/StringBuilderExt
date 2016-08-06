@@ -1,0 +1,17 @@
+namespace 01_StringBuilderSubstring
+{
+    using System;
+    using System.Text;
+
+    class StringBuilderExt
+    {
+        static void Main(string[] args)
+        {
+            StringBuilder strB = new StringBuilder();
+            strB.Append("reflection");
+            Console.WriteLine(strB.ToString());
+            strB=strB.Substring(0, 7);
+            Console.WriteLine(strB.ToString());
+        }
+    }
+}
