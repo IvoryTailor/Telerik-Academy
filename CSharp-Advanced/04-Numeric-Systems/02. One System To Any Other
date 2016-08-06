@@ -1,0 +1,67 @@
+namespace 02.One_System_To_Any_Other
+{
+    using System;
+    using System.Numerics;
+
+    class Program
+    {
+        static void Main()
+        {
+            short s = short.Parse(Console.ReadLine());
+            string input = Console.ReadLine();
+            short d = short.Parse(Console.ReadLine());
+            BigInteger deciNum = ToDecimal(input, s);
+            if (d==10)
+            {
+                Console.WriteLine(deciNum);
+            }
+            else
+            {
+                FromDecimal(deciNum, d);
+            }
+        }
+
+        static BigInteger ToDecimal(string inp, short b)
+        {
+            char[] hex = new char[6] { 'A', 'B', 'C', 'D', 'E', 'F' };
+            BigInteger decim = 0;
+            for (int i = 0; i < inp.Length; i++)
+            {
+                BigInteger temp = 0;
+                if (Char.IsLetter(inp[i]))
+                {
+                    temp = Array.IndexOf(hex, inp[i]) + 10;
+                }
+                else
+                {
+                    temp = inp[i] - 48;
+                }
+                decim = temp + decim * b;
+            }
+            return decim;
+        }
+
+        static void FromDecimal (BigInteger d, short b)
+        {
+            string result = "";
+            char[] hex = new char[6] { 'A', 'B', 'C', 'D', 'E', 'F' };
+            while (d > 0)
+            {
+                int rem = (int)(d % b);
+                if (rem > 9)
+                {
+                    result += hex.GetValue(rem - 10);
+                }
+                else
+                {
+                    result += rem;
+                }
+                d /= b;
+            }
+            result = result.TrimEnd(new char[] { '0' });
+            char[] converted = result.ToCharArray();
+            Array.Reverse(converted);
+            Console.WriteLine(converted);
+        }
+    }
+}
