@@ -1,0 +1,60 @@
+namespace Problem_01
+{
+    using System;
+
+   public class Display
+    {
+        private double _size;
+        private int _numberOfColors;
+
+        public Display() : this(0, 0)
+        {
+        }
+
+        public Display(double size) : this(size, 0)
+        {
+        }
+
+        public Display(double size, int numberOfColors)
+        {
+            this.Size = size;
+            this.NumberOfColors = numberOfColors;
+        }
+
+        public double Size
+        {
+            get { return this._size; }
+            set
+            {
+                if (value < 3)
+                {
+                    throw new ArgumentOutOfRangeException("The specified Display size is too small! Should be more than 2 inches.");
+                }
+                this._size = value;
+            }
+        }
+
+        public int NumberOfColors
+        {
+            get { return this._numberOfColors; }
+            set
+            {
+                if (value < 2)
+                {
+                    throw new ArgumentOutOfRangeException("A display with less than 1 color is most likely broken! Display should have at least 2 colors.");
+                }
+                else if (value > 16777216)
+                {
+                    throw new ArgumentOutOfRangeException("The Display has too much colors! Should have less than 16 777 217 colors");
+                }
+                this._numberOfColors = value;
+            }
+        }
+
+        public override string ToString()
+        {
+            return string.Format($"\n\t- Size: {Size} inches\n" +
+                                 $"\t- Colors: {NumberOfColors}\n");
+        }
+    }
+}
