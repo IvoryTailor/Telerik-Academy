@@ -1,0 +1,63 @@
+using System;
+using System.Collections.Generic;
+
+namespace _08.Number_As_Array
+{
+    class Program
+    {
+        static void Main()
+        {
+            string input = Console.ReadLine();
+            int[] numbers = ReadInput(input, 2);
+            if (numbers[0] > numbers[1])
+            {
+                numbers[1] = numbers[0];
+            }
+            else if (numbers[1] > numbers[0])
+            {
+                numbers[0] = numbers[1];
+            }
+            input = Console.ReadLine();
+            int[] arrayA = ReadInput(input, numbers[0]);
+            input = Console.ReadLine();
+            int[] arrayB = ReadInput(input, numbers[1]);
+            SumArrays(arrayA, arrayB);
+        }
+
+        static int[] ReadInput(string inp, int n)
+        {
+            int[] arr = Array.ConvertAll(inp.Split(
+                new[] { ' ' },
+                StringSplitOptions.RemoveEmptyEntries), int.Parse);
+            List<int> list = new List<int>(arr);
+            if (arr.Length < n)
+            {
+                for (int i = arr.Length; i < n; i++)
+                {
+                    list.Add(0);
+                }
+            }
+            arr = list.ToArray();
+            return arr;
+        }
+
+        static void SumArrays(int[] a, int[] b)
+        {
+            List<int> c = new List<int>();
+            c.Add(0);
+            for (int i = 0; i < a.Length; i++)
+            {
+                int temp = 0;
+                c[i] += a[i] + b[i];
+                if (c[i] > 9)
+                {
+                    temp = c[i] / 10;
+                    c[i] %= 10;
+                }
+                c.Add(temp);
+                Console.Write("{0} ", c[i]);
+            }
+            Console.WriteLine();
+        }
+    }
+}
