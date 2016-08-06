@@ -1,0 +1,61 @@
+namespace 03_StudentProblems
+{
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var classStudents = new[]
+            {
+                new { FirstName="Pesho", LastName="Toshov", Age=22},
+                new { FirstName="Gosho", LastName="Peshov", Age=50},
+                new {FirstName="Mariika", LastName="Mariikova", Age=19},
+                new {FirstName="Tosho", LastName="Goshov", Age=22},
+                new {FirstName="Ginka", LastName="Ivanova", Age=25}
+            };
+
+
+            //03.First BeforeLast
+            var firstBeforeLast = 
+                from student in classStudents
+                where (student.FirstName.CompareTo(student.LastName) == -1)
+                select student;
+            foreach (var student in firstBeforeLast)
+            {
+                Console.WriteLine("{0} {1}", student.FirstName, student.LastName);
+            }
+
+            Console.WriteLine();
+
+            //04. Age range
+            var ageRange = classStudents
+                .Where(s => s.Age >= 18 && s.Age <= 24)
+                .Select(s => s.FirstName)
+                .ToArray();
+               
+            foreach (var student in ageRange)
+            {
+                Console.WriteLine(student);
+            }
+            Console.WriteLine();
+
+            //05. Order students
+            var orderStudents = classStudents
+                .OrderByDescending(s => s.FirstName)
+                .ThenByDescending(s => s.LastName)
+                .Select(s => new {s.FirstName, s.LastName})
+                .ToArray();
+            foreach (var student in orderStudents)
+            {
+                Console.WriteLine(student);
+            }
+            Console.WriteLine();
+        }
+
+
+    }
+}
