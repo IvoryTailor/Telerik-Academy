@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+
+namespace 03_Animal_hierarchy
+{
+    using Animals;
+    using Enumerations;
+
+    class Startup
+    {
+        static void Main(string[] args)
+        {
+            List<Animal> animals =new List<Animal>()
+            {
+                new Dog("Pesho", 4, GenderType.Male),
+                new Dog("Pesho", 5, GenderType.Male),
+                new Dog("Dora", 10, GenderType.Female),
+                new Frog("Gosho", 1, GenderType.Male),
+                new Frog("Gosho", 2, GenderType.Female),
+                new Frog("Gosho", 3, GenderType.Female),
+                new Tomcat("Misho", 6),
+                new Tomcat("Misho", 10),
+                new Tomcat("Misho", 7),
+                new Kitten("Lili", 3),
+                new Kitten("Lili", 4),
+                new Kitten("Lili", 5),
+            };
+
+            foreach (var animal in animals)
+            {
+                animal.MakeSound();
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            //Get average age of dogs
+            List<Animal> dogs=new List<Animal>()
+            {
+                new Dog("Pesho", 4, GenderType.Male),
+                new Dog("Pesho", 5, GenderType.Male),
+                new Dog("Dora", 10, GenderType.Female),
+            };
+
+            dogs.Averageh();
+
+        }
+    }
+}
