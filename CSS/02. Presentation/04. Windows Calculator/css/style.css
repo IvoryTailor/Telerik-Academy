@@ -1,0 +1,95 @@
+/*Styled from outer to inner*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+* html .clearfix {
+    zoom: 1;
+}
+
+
+/* IE6 */
+
+*:first-child+html .clearfix {
+    zoom: 1;
+}
+
+
+/* IE7 */
+
+body {
+    font-family: sans-serif;
+}
+
+.wrapper {
+    width: 600px;
+    height: 500px;
+    border: 1px solid #000;
+    border-radius: 7px;
+    margin: 10px;
+    font-size: 15px;
+}
+
+
+/*Main window*/
+
+header {
+    height: 7%;
+}
+
+header img {
+    width: 3%;
+    margin: 5px;
+}
+
+header h1 {
+    display: inline-block;
+    font-weight: 100;
+    font-size: 1.2em;
+    position: relative;
+    bottom: 10px;
+}
+
+header ul {
+    float: right;
+    list-style: none;
+    margin-right: 5px;
+    border: 1px solid #000;
+}
+
+header ul li {
+    display: inline-block;
+    width: 25px;
+    text-align: center;
+    border: 1px solid #000;
+    float: left;
+    background-size: cover;
+}
+
+header ul li:nth-child(1){
+    background-image: url(../images/minimize.png)
+}
+
+header ul li:nth-child(2){
+    background-image: url(../images/resize.png)
+}
+
+header ul li:last-of-type {
+    width: 45px;
+    background-image: url(../images/close.png);
+}
+
+header ul li img {
+    zoom: 50px
+}

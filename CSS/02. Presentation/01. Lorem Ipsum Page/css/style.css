@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Consolas, sans-serif;
+    color: #0094ff;
+    font-size: 15px;
+}
+
+h4 {
+    margin: 20px 0 15px 10px;
+}
+
+h4:first-letter  {
+    font-family: Edwardian Script ITC, serif;
+    font-size: 2.5em;
+}
+
+p {
+    margin-left: 10px;
+}
