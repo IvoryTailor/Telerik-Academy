@@ -1,0 +1,21 @@
+namespace 01.Leap_Year
+{
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            int year = int.Parse(Console.ReadLine());
+            DateTime now = new DateTime(year,01,01);
+            if (DateTime.IsLeapYear(now.Year))
+            {
+                Console.WriteLine("Leap");
+            }
+            else
+            {
+                Console.WriteLine("Common");
+            }
+        }
+    }
+}
