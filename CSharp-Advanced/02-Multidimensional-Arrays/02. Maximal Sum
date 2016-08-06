@@ -1,0 +1,46 @@
+using System;
+
+namespace 02.Maximal_Sum
+{
+    class Program
+    {
+        static void Main()
+        {
+            string input = Console.ReadLine();
+            int[] nM = Array.ConvertAll(input.Split(
+                new[] { ' ' },
+                StringSplitOptions.RemoveEmptyEntries), int.Parse);
+            int[][] matrix = new int[nM[0]][];
+            for (int i = 0; i < nM[0]; i++)
+            {
+                input = Console.ReadLine();
+                matrix[i] = Array.ConvertAll(input.Split(
+                    new[] { ' ' },
+                    StringSplitOptions.RemoveEmptyEntries), int.Parse);
+            }
+
+            int bestSum = int.MinValue;
+
+            for (int rows = 0; rows < (nM[0] - 2); rows++)
+            {
+                for (int cols = 0; cols < nM[1] - 2; cols++)
+                {
+                    int sum = matrix[rows][cols] +
+                           matrix[rows + 1][cols] +
+                           matrix[rows + 2][cols] +
+                           matrix[rows][cols + 1] +
+                           matrix[rows + 1][cols + 1] +
+                           matrix[rows + 2][cols + 1] +
+                           matrix[rows][cols + 2] +
+                           matrix[rows + 1][cols + 2] +
+                           matrix[rows + 2][cols + 2];
+                    if (sum > bestSum)
+                    {
+                        bestSum = sum;
+                    }
+                }
+            }
+            Console.WriteLine(bestSum);
+        }
+    }
+}
