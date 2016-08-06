@@ -1,0 +1,11 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        ulong number = ulong.Parse(Console.ReadLine());
+        number = number >> 3;
+        Console.WriteLine((number&1)==0?"0":"1");
+    }
+}
