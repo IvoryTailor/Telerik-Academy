@@ -1,0 +1,15 @@
+using System;
+
+internal class Program
+{
+    private static void Main()
+    {
+        long number = long.Parse(Console.ReadLine());
+        long result = 0;
+        for (int i = 1; number >= Math.Pow(5, i); i++)
+        {
+            result += (number/(long) (Math.Pow(5, i)));
+        }
+        Console.WriteLine(result);
+    }
+}
