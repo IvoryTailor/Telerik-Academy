@@ -1,0 +1,83 @@
+using System;
+using System.Numerics;
+
+namespace _12.Integer_Calculations
+{
+    class Program
+    {
+        static void Main()
+        {
+            string input = Console.ReadLine();
+            int[] array = ReadInput(input);
+            Minimum(array);
+            Maximum(array);
+            Average(array);
+            Sum(array);
+            Product(array);
+        }
+
+        static int[] ReadInput(string inp)
+        {
+            int[] arr = Array.ConvertAll(inp.Split(
+                new[] { ' ' },
+                StringSplitOptions.RemoveEmptyEntries), int.Parse);
+            return arr;
+        }
+
+        static void Minimum(int[] a)
+        {
+            int min = int.MaxValue;
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i]<min)
+                {
+                    min = a[i];
+                }
+            }
+            Console.WriteLine(min);
+        }
+
+        static void Maximum(int[] a)
+        {
+            int max = int.MinValue;
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i]>max)
+                {
+                    max = a[i];
+                }
+            }
+            Console.WriteLine(max);
+        }
+
+        static void Average(int[] a)
+        {
+            double avg = 0;
+            for (int i = 0; i < a.Length; i++)
+            {
+                avg += a[i];
+            }
+            Console.WriteLine("{0:F}", avg/a.Length);
+        }
+
+        static void Sum(int[] a)
+        {
+            int sum = 0;
+            for (int i = 0; i < a.Length; i++)
+            {
+                sum += a[i];
+            }
+            Console.WriteLine(sum);
+        }
+
+        static void Product(int[] a)
+        {
+            BigInteger product = 1;
+            for (int i = 0; i < a.Length; i++)
+            {
+                product *= a[i];
+            }
+            Console.WriteLine(product);
+        }
+    }
+}
