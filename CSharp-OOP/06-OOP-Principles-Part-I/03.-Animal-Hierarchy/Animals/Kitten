@@ -1,0 +1,17 @@
+namespace 03_Animal_hierarchy.Animals
+{
+    using System;
+    using Enumerations;
+
+    public class Kitten : Cat
+    {
+        public Kitten(string name, int age) : base(name, age, GenderType.Female)
+        {
+        }
+
+        public override void MakeSound()
+        {
+            Console.WriteLine($"Kitten: Mew mew I am {this.Age}");
+        }
+    }
+}
