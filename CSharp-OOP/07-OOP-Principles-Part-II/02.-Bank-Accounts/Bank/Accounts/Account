@@ -1,0 +1,73 @@
+namespace 02.BankAccounts.Bank.Accounts
+{
+    using Contracts;
+    using Enumerations;
+    using System;
+
+    public abstract class Account : IDeposit
+    {
+        //FIELDS
+        private CustomerType customer;
+        private decimal balance; // cannot be negative, becomes 0 upon account deletion
+        private double monthlyInterestRate; //interest rate in percentages
+
+        //CONSTRUCTOR
+        public Account(CustomerType customer, decimal balance, double interestRateInMonths)
+        {
+            this.customer = customer;
+            this.Balance = balance;
+            this.MonthlyInterestRate = interestRateInMonths;
+        }
+
+        //PROPERTIES
+        public CustomerType Customer { get; set; }
+        public decimal Balance
+        {
+            get
+            {
+                return this.balance;
+            }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("Account balance must have a positive value.");
+                }
+                this.balance = value;
+            }
+        }
+        public double MonthlyInterestRate
+        {
+            get
+            {
+                return this.monthlyInterestRate/100;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Monthly interest rate cannot be negative number");
+                }
+                this.monthlyInterestRate = value;
+            }
+        }
+
+        //METHODS
+        public virtual void DepositSum(decimal sum)
+        {
+            if (sum < 0)
+            {
+                throw new ArgumentOutOfRangeException("Sum should have a positive value.");
+            }
+            Balance += sum;
+        }
+        public virtual double CalculateInterest(int period) //returns interest rate for the given period, in percentages
+        {
+            if (period < 0)
+            {
+                period = 0;
+            }
+            return MonthlyInterestRate * period;
+        }
+    }
+}
