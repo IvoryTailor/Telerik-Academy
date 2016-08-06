@@ -1,0 +1,7 @@
+namespace _01_School_classes.Contracts
+{
+    public interface IComment
+    {
+         string Comment { get; set; } 
+    }
+}
