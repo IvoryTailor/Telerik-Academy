@@ -1,0 +1,18 @@
+namespace 02_IEnumerableExtensions
+{
+    using System;
+    using System.Collections.Generic;
+
+    class IEnumExt
+    {
+        static void Main(string[] args)
+        {
+            int[] ints= new int[] {1,2,3,4,5};
+
+            Console.WriteLine(ints.Sum(ints[1],ints[3]));
+            Console.WriteLine(ints.Product(ints[0],ints[2]));
+            Console.WriteLine(ints.Minh());
+            Console.WriteLine(ints.Average());
+        }
+    }
+}
