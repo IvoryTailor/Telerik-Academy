@@ -1,0 +1,25 @@
+using System;
+using System.Text.RegularExpressions;
+
+class Program
+{
+    static void Main()
+    {
+        string type = Console.ReadLine();
+        string value = Console.ReadLine();
+        if (type == "integer")
+        {
+            int number = Convert.ToInt32(value);
+            Console.WriteLine(number + 1);
+        }
+        else if (type == "real")
+        {
+            double number = Convert.ToDouble(value);
+            Console.WriteLine("{0:F2}", (number + 1));
+        }
+        else
+        {
+            Console.WriteLine("{0}*", value);
+        }
+    }
+}
