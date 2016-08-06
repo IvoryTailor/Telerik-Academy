@@ -1,0 +1,36 @@
+using System;
+
+namespace _11.Adding_Polinomials
+{
+    class Program
+    {
+        static void Main()
+        {
+            int number = int.Parse(Console.ReadLine());
+            string input = Console.ReadLine();
+            int[] polyA = ReadInput(input, number);
+            input = Console.ReadLine();
+            int[] polyB = ReadInput(input, number);
+            SumPoly(polyA, polyB, number);
+        }
+
+        static int[] ReadInput(string inp, int n)
+        {
+            int[] arr = Array.ConvertAll(inp.Split(
+                new[] { ' ' },
+                StringSplitOptions.RemoveEmptyEntries), int.Parse);
+            return arr;
+        }
+
+        static void SumPoly(int[] a, int[] b, int n)
+        {
+            int[] c=new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                c[i] = a[i] + b[i];
+                Console.Write("{0} ", c[i]);
+            }
+            Console.WriteLine();
+        }
+    }
+}
