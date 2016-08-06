@@ -1,0 +1,199 @@
+using System;
+using System.Linq;
+
+namespace 03_Sequence_In_Matrix
+{
+    class SequenceInMatrix
+    {
+        private static void Main()
+        {
+            int[] dimensions = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+
+            int rows = dimensions[0];
+            int cols = dimensions[1];
+
+            int bestLeftDiagonalSeqLength = 0;
+            int bestRightDiagonalSeqLength = 0;
+
+            string currentNum = "?";
+            string previousNum = "?";
+
+            int count = 1;
+            int bestCount = 0;
+
+            string[,] matrix = new string[rows, cols];
+
+            string[] input = Console.ReadLine().Split(' ').ToArray();
+
+            for (int i = 0; i <= rows - 1; i++)
+            {
+                /*---------------- Horizontal Lines Algorithm----------------*/
+
+                previousNum = input[0];
+                for (int j = 0; j < cols; j++)
+                {
+                    currentNum = input[j];
+                    if (previousNum == currentNum) count++;
+                    else
+                    {
+                        if (count > bestCount) bestCount = count;
+                        count = 1;
+                        previousNum = currentNum;
+                    }
+                    matrix[i, j] = input[j];
+                }
+                if (count > bestCount) bestCount = count;
+                count = 1;
+
+                if (i < rows - 1) input = Console.ReadLine().Split(' ').ToArray();
+            }
+
+            /*---------------- Vertical Lines Algorithm----------------*/
+
+            previousNum = matrix[0, 0];
+            int x = 0, y = 0;
+            for (y = 0; y < cols; y++)
+            {
+                for (x = 0; x < rows; x++)
+                {
+                    currentNum = matrix[x, y];
+                    if (previousNum == currentNum) count++;
+                    else
+                    {
+                        if (count > bestCount) bestCount = count;
+                        count = 1;
+                        previousNum = currentNum;
+                    }
+                }
+                if (count > bestCount) bestCount = count;
+                count = 1;
+            }
+
+            /*----------------Diagonal Algorithm----------------*/ //ToDo Not working atm, dont have time :(
+            bestCount = 0;//pure test
+            int leftDiagonalSeqLength = 0;
+            int rightDiagonalSeqLength = 0;
+
+            string currentLeftDNum = "?";
+            string currentRightDNum = "?";
+
+            string previousLeftDNum = "?";
+            string previousRightDNum = "?";
+
+            for (int i = 0; i < cols - 1; i++)
+            {
+                bool shift = true;
+                bool ending = false;
+                int xLeft = 0;
+                int yLeft = 0;
+                int xRight = 0;
+                int yRight = 0;
+                if ((i > cols / 2)&&!ending)
+                {
+                    shift = false;
+                    i++;
+                    ending = true;
+                }
+                if (shift)
+                {
+                    xLeft = 0;
+                    yLeft = i;
+
+                    xRight = 0;
+                    yRight = (cols - 1) - i;
+
+                    previousLeftDNum = matrix[xLeft, yLeft];
+                    previousRightDNum = matrix[xRight, yRight];
+                    currentLeftDNum = matrix[xLeft + 1, yLeft + 1];
+                    currentRightDNum = matrix[xRight + 1, yRight - 1];
+
+
+
+                    while ((xLeft < rows - 1 && xRight < rows - 1) && (yLeft < cols - 1 && yRight >= 0))
+                    {
+                        if (currentLeftDNum == previousLeftDNum) leftDiagonalSeqLength++;
+                        else
+                        {
+                            if (bestLeftDiagonalSeqLength < leftDiagonalSeqLength)
+                                bestLeftDiagonalSeqLength = leftDiagonalSeqLength;
+                            previousLeftDNum = currentLeftDNum;
+                            leftDiagonalSeqLength = 0;
+                        }
+                        ++xLeft;
+                        ++yLeft;
+                        currentLeftDNum = matrix[xLeft, yLeft];
+
+
+                        if (currentRightDNum == previousRightDNum) rightDiagonalSeqLength++;
+                        else
+                        {
+                            if (bestRightDiagonalSeqLength < rightDiagonalSeqLength)
+                                bestRightDiagonalSeqLength = rightDiagonalSeqLength;
+                            previousRightDNum = currentRightDNum;
+                            rightDiagonalSeqLength = 0;
+                        }
+                        ++xRight;
+                        --yRight;
+                        currentRightDNum = matrix[xRight, yRight];
+                    }
+                    if (leftDiagonalSeqLength > bestLeftDiagonalSeqLength) bestLeftDiagonalSeqLength = leftDiagonalSeqLength;//MCC
+                    if (rightDiagonalSeqLength > bestRightDiagonalSeqLength) bestRightDiagonalSeqLength = rightDiagonalSeqLength;//MCC
+                }
+                else
+                {
+                    if (i==rows-1)
+                    {
+                        break;
+                    }
+                    xLeft = i;
+                    yLeft = 0;
+
+                    xRight = (rows - 1) - i;
+                    yRight = (cols - 1) - i;
+
+                    previousLeftDNum = matrix[xLeft, yLeft];
+                    previousRightDNum = matrix[xRight, yRight];
+                    currentLeftDNum = matrix[xLeft + 1, yLeft + 1];
+                    currentRightDNum = matrix[xRight + 1, yRight - 1];
+
+
+
+                    while ((xLeft < rows - 1 && xRight < rows - 1) && (yLeft < rows - 1 && yRight >= 0))
+                    {
+                        if (currentLeftDNum == previousLeftDNum) leftDiagonalSeqLength++;
+                        else
+                        {
+                            if (bestLeftDiagonalSeqLength < leftDiagonalSeqLength)
+                                bestLeftDiagonalSeqLength = leftDiagonalSeqLength;
+                            previousLeftDNum = currentLeftDNum;
+                            leftDiagonalSeqLength = 0;
+                        }
+                        ++xLeft;
+                        ++yLeft;
+                        currentLeftDNum = matrix[xLeft, yLeft];
+
+
+                        if (currentRightDNum == previousRightDNum) rightDiagonalSeqLength++;
+                        else
+                        {
+                            if (bestRightDiagonalSeqLength < rightDiagonalSeqLength)
+                                bestRightDiagonalSeqLength = rightDiagonalSeqLength;
+                            previousRightDNum = currentRightDNum;
+                            rightDiagonalSeqLength = 0;
+                        }
+                        ++xRight;
+                        --yRight;
+                        currentRightDNum = matrix[xRight, yRight];
+                    }
+                    if (leftDiagonalSeqLength > bestLeftDiagonalSeqLength) bestLeftDiagonalSeqLength = leftDiagonalSeqLength;//MCC
+                    if (rightDiagonalSeqLength > bestRightDiagonalSeqLength) bestRightDiagonalSeqLength = rightDiagonalSeqLength;//MCC
+                }
+                int maxDiagonal = Math.Max(bestLeftDiagonalSeqLength, bestRightDiagonalSeqLength);
+
+                if (maxDiagonal > bestCount)
+                    bestCount = maxDiagonal;
+            }
+            Console.WriteLine(bestCount);
+        }
+    }
+}
