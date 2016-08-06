@@ -1,0 +1,52 @@
+using System;
+using System.Text;
+
+namespace 02.Person_Class
+{
+    public class Person
+    {
+        private int? age;
+
+        //CONSTRUCTOR
+        public Person(string name, int? age)
+        {
+            this.Name = name;
+            this.Age = age;
+        }
+
+        //PROPERTIES
+        public string Name { get; set; }
+        public int? Age
+        {
+            get
+            {
+                return this.age ?? -1;
+            }
+            set
+            {
+                if (value < -1)
+                {
+                    throw new ArgumentOutOfRangeException("Age cannot be negative!");
+                }
+                this.age = value;
+            }
+        }
+
+        //METHODS
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.Append($"{this.Name} -> ");
+            if (this.Age == -1)
+            {
+                sb.Append("unspecified age.");
+            }
+            else
+            {
+                sb.Append($"{this.Age} years old.");
+            }
+            return sb.ToString();
+        }
+
+    }
+}
