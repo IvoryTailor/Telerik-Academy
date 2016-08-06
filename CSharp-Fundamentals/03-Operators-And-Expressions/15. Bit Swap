@@ -1,0 +1,22 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        uint number = uint.Parse(Console.ReadLine());
+        int positionP = int.Parse(Console.ReadLine());
+        int positionQ = int.Parse(Console.ReadLine());
+        int endPos = int.Parse(Console.ReadLine());
+        uint mask = 1;
+        for (int i = 0; i < endPos; i++)
+        {
+            if (((number>>(positionP+i))&mask)!=((number>>(positionQ+i))&mask))
+            {
+                number = number ^ (mask << (positionP + i));
+                number = number ^ (mask << (positionQ + i));
+            }
+        }
+        Console.WriteLine(number);
+    }
+}
