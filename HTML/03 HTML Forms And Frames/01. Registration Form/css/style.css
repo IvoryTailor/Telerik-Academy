@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 500px;
+    height: 600px;
+}
+        
+table, th, td {
+    border: 1px solid black;
+    padding: 1%;
+}
+        
+input {
+    width: 95%;
+}
+
+textarea {
+    width: 80%;
+    height: 57px;
+}
+
+#city {
+    width: 65%;;
+}
+
+#label-state {
+    font-weight: bold;
+    padding: 9.5px 5px;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    vertical-align: middle;
+}
+
+#state {
+    width: 16%;
+}
+
+#postal {
+    width: 20%;
+}
+
+#country {
+    width: 70%;
+}
+
+#country-code, .area-code {
+    width: 18%;
+}
+
+.phone {
+    width: 40%;
+}
+
+#month, #day, #year {
+    width: 9%;
+    margin:0 8px 0 5px;
+}
+
+#year, #gender {
+    width: 23%;
+    margin-right: 0;
+}
+
+input[type=radio] {
+    width: 10%;
+}
+
+#comments {
+    height: 70px;
+}
+
+.submit {
+    background-color: rgb(209, 237, 225);
+}
+
+input[type=submit] {
+    width: 15%;
+}
+
+input[type=reset] {
+    width: 20%;
+    margin-left: 10px;
+}
