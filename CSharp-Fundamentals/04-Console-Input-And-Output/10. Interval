@@ -1,0 +1,26 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        long numMin = long.Parse(Console.ReadLine());
+        long numMax = long.Parse(Console.ReadLine());
+        long sum = 0;
+        if (numMax<5)
+        {
+            Console.WriteLine(sum);
+        }
+        else
+        {
+            for (long i = (numMin+1); i < numMax; i++)
+            {
+                if ((i%5)==0)
+                {
+                    sum++;
+                }
+            }
+            Console.WriteLine(sum);
+        }
+    }
+}
