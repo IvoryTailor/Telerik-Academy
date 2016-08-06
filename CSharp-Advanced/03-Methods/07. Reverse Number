@@ -1,0 +1,25 @@
+using System;
+
+namespace _07.Reverse_Number
+{
+    class Program
+    {
+        static void Main()
+        {
+            decimal number = decimal.Parse(Console.ReadLine());
+            ReverseArray(ReadInput(number));
+        }
+
+        static char[] ReadInput(decimal n)
+        {
+            char[] arr = n.ToString().ToCharArray();
+            return arr;
+        }
+
+        static void ReverseArray(char[] arr)
+        {
+            Array.Reverse(arr);
+            Console.WriteLine(arr);
+        }
+    }
+}
