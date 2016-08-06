@@ -1,0 +1,95 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+
+namespace 03.64BitArray
+{
+    public class BitArray64 : IEnumerable<int>
+    {
+        //CONSTRUCTOR
+        public BitArray64(ulong number)
+        {
+            this.Number = number;
+        }
+
+        //PROPERTIES
+        public ulong Number { get; set; }
+
+
+        //METHODS
+        public IEnumerator<int> GetEnumerator()
+        {
+            for (int i = 63; i >= 0; i--)
+            {
+                yield return this[i];
+            }
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
+        public override bool Equals(object obj)
+        {
+            if (!(obj is BitArray64))
+            {
+                throw new InvalidCastException("The obj argument is not castable to BitArray64");
+            }
+            BitArray64 bitA = (BitArray64)obj;
+            return BitArray64.Equals(this.Number, bitA.Number);
+        }
+        public override int GetHashCode()
+        {
+            return (this.Number.GetHashCode() * 573);
+        }
+        public int this[int index]
+        {
+            get
+            {
+                //Get only bits at valid position
+                if (index < 0 || index > 63)
+                {
+                    throw new IndexOutOfRangeException($"Index {index} is invalid!");
+                }
+                return ((int)(this.Number >> index) & 1);
+            }
+            set
+            {
+                //Check if index is valid for setting
+                if (index < 0 || index > 63)
+                {
+                    throw new IndexOutOfRangeException($"Index {index} is invalid!");
+                }
+                //Check for valid value (0 | 1)
+                if (value < 0 || value > 1)
+                {
+                    throw new ArgumentOutOfRangeException($"The value {value} is invalid! Only 0 and 1 are allowed.");
+                }
+                //Toggle the n-th bit (if needed)
+                if (((int)(this.Number >> index) & 1) != value)
+                {
+                    this.Number ^= (1ul << index);
+                } 
+            }
+        }
+        public static bool operator == (BitArray64 bitA1, BitArray64 bitA2)
+        {
+            return BitArray64.Equals(bitA1, bitA2);
+        }
+        public static bool operator != (BitArray64 bitA1, BitArray64 bitA2)
+        {
+            return !(BitArray64.Equals(bitA1, bitA2));
+        }
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+
+            for (int i = 63; i >= 0; i--)
+            {
+                sb.Append((this.Number >> i) & 1);
+            }
+
+            return sb.ToString();
+        }
+    }
+}
