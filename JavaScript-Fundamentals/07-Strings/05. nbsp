@@ -1,0 +1,3 @@
+function solve5(args) {
+    console.log(args[0].replace(/ /g, '&nbsp;'))// ->/ +/
+}
