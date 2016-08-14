@@ -1,0 +1,6 @@
+function solve (args) {
+    var num = +args[0];
+    for (var i = 1; i <= num; i++) {
+        process.stdout.write(i + ' ');
+    }
+}
