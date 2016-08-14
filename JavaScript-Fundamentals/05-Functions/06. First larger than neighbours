@@ -1,0 +1,10 @@
+function solve(args) {
+    var size = +args[0];
+    var arr = args[1].split(' ');
+    for (var i = 1; i < size - 1; i++) {
+        if (((+arr[i] > (+arr[i-1]))) && ((+arr[i]) > (arr[i+1]))) {
+            return i;
+        }
+    }
+    console.log('-1');
+}
