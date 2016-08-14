@@ -1,0 +1,40 @@
+function solve(args) {
+    function Point(x, y) {
+        this.PointX = x;
+        this.PointY = y;
+    }
+    function Line(p1, p2) {
+        this.Point1 = p1;
+        this.Point2 = p2;
+    }
+    var points = [];
+    for (var i = 0, j = 0; i < args.length; i+=2, j++) {
+        points[j] = new Point(+args[i], +args[i + 1]);
+    }
+    var lines = [];
+    for (var i = 0, j = 0; i <= ((points.length/2)+1); i+=2, j+=1) {
+        lines[j] = new Line(points[i], points[i+1]);
+    }
+    //Calculate distance(length) of each line
+    var x = Math.abs(lines[0].Point1.PointX-lines[0].Point2.PointX);
+    var y = Math.abs(lines[0].Point1.PointY-lines[0].Point2.PointY);
+    var distance1 = Math.sqrt((x * x) + (y * y));
+
+    var x = Math.abs(lines[1].Point1.PointX-lines[1].Point2.PointX);
+    var y = Math.abs(lines[1].Point1.PointY-lines[1].Point2.PointY);
+    var distance2 = Math.sqrt((x * x) + (y * y));
+
+    var x = Math.abs(lines[2].Point1.PointX-lines[2].Point2.PointX);
+    var y = Math.abs(lines[2].Point1.PointY-lines[2].Point2.PointY);
+    var distance3 = Math.sqrt((x * x) + (y * y));
+
+    console.log(distance1.toFixed(2));
+    console.log(distance2.toFixed(2));
+    console.log(distance3.toFixed(2));
+
+    if ((distance1+distance2>distance3)&&(distance1+distance3>distance2)&&(distance2+distance3>distance1)) {
+        console.log('Triangle can be built');
+    }else {
+        console.log('Triangle can not be built');
+    }
+}
