@@ -1,0 +1,13 @@
+function solve3(args) {
+    var nums = args[0].split(' ');
+    return GetMax(+nums[0], GetMax(+nums[1], +nums[2]));
+
+//GetMax
+function GetMax(a, b) {
+    if (a > b) {
+        return a;
+    }else {
+        return b;
+    }
+}
+}
