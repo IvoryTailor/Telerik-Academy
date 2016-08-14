@@ -1,0 +1,19 @@
+function solve(args) {
+    var arr = args[0].split('\n');
+    var streak = 1;
+    var longestSterak = 1;
+    var repeat = 0;
+    for (var i = 1; i < +arr[0]; i++) {
+        for (var j = i+1; j <= +arr[0]; j++) {
+            if ((+arr[i]) == (+arr[j])) {
+                streak += 1;
+            }
+        }
+        if (streak>longestSterak) {
+            longestSterak=streak;
+            repeat = +arr[i];
+        }
+        streak = 1;
+    }
+    console.log(repeat + ' (' + longestSterak + ' times)')
+}
