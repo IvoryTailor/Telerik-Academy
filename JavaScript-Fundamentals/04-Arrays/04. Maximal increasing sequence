@@ -1,0 +1,17 @@
+function solve(args) {
+    var arr = args[0].split('\n');
+    var num = +arr[0];
+    var streak=1;
+    var longestSterak=1;
+    for (var i = 0; i < num; i++) {
+        if (+arr[i] < +arr[i+1]) {
+            streak+=1;
+        }else{
+            if (streak>longestSterak) {
+                longestSterak=streak;
+            }
+            streak=1;
+        }
+    }
+    console.log(longestSterak);
+}
