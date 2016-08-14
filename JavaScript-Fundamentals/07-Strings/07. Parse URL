@@ -1,0 +1,18 @@
+function solve7(args) {
+    'use strict'
+    let endOfProtocol = args[0].indexOf('://'),
+        protocol = args[0].slice(0, endOfProtocol),
+        serverAndRes = args[0].slice(endOfProtocol + 3),
+        endOfServer = serverAndRes.indexOf('/'),
+        server = new String,
+        resource = new String;
+
+    for (let i = 0; i < endOfServer; i += 1) {
+        server += serverAndRes[i];
+    }
+    resource = serverAndRes.slice(endOfServer);
+
+    console.log('protocol: ' + protocol);
+    console.log('server: ' + server);
+    console.log('resource: ' + resource);
+}
