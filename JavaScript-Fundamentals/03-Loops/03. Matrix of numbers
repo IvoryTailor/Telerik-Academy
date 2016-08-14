@@ -1,0 +1,14 @@
+function solve(args) {
+    var num = +args[0];
+    for (var i = 1, j = i; i <= num;) {
+        process.stdout.write(j + ' ');
+        j++;
+        if (j > num + (i - 1)) {
+            i++;
+            j=i;
+            console.log('');
+            continue;
+        }
+        
+    }
+}
