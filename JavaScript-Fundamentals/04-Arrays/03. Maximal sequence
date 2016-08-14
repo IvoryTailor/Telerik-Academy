@@ -1,0 +1,16 @@
+function solve(args) {
+    var arr = args[0].split('\n');
+    var streak=1;
+    var longestSterak=0;
+    for (var i = 1; i < arr[0]; i++) {
+        if (arr[i]==arr[i+1]) {
+            streak+=1;
+            if (streak>longestSterak) {
+                longestSterak=streak;
+            }
+        }else{
+            streak=1;
+        }
+    }
+    console.log(longestSterak);
+}
