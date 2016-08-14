@@ -1,0 +1,11 @@
+function solve1(args) {
+    'use strict'
+    let options = JSON.parse(args[0]);
+    let text = args[1];
+
+    for (let option in options) {
+        let regex = new RegExp (`#{` + option + `}`, `g`);
+        text = text.replace(regex, options[option])
+    }
+    console.log(text);
+}
