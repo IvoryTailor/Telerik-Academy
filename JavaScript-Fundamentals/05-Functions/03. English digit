@@ -1,0 +1,6 @@
+function solve(args) {
+    var num = +args[0];
+    num%=10;
+    var words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+    console.log(words[num]);
+}
