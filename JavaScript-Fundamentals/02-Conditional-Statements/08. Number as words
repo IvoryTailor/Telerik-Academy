@@ -1,0 +1,33 @@
+function solve (args) {
+    var num = +args[0];
+    var ones = num % 10;
+    num = ~~(num/10);
+    var decims = num % 10;
+    var hundreds = ~~(num / 10);
+    var a = ['','one ','two ','three ','four ', 'five ','six ','seven ','eight ','nine ','ten ','eleven ','twelve ','thirteen ','fourteen ','fifteen ','sixteen ','seventeen ','eighteen ','nineteen '];
+    var b = ['', '', 'twenty','thirty','forty','fifty', 'sixty','seventy','eighty','ninety'];
+
+if (hundreds==0 && decims==0 && ones==0) {
+    console.log('Zero');
+}else {
+    if (hundreds>0) {
+        process.stdout.write(a[hundreds].substr(0,1).toUpperCase() + a[hundreds].substr(1));
+        process.stdout.write('hundred ');
+        if ((decims==0&&ones>0)||decims>0) {
+            process.stdout.write('and ')
+        }
+    }
+    if (decims==0) {
+        if (ones>0) {
+            hundreds==0?process.stdout.write(a[ones].substr(0,1).toUpperCase() + a[ones].substr(1)):process.stdout.write(a[ones]);
+        }
+    }else if (decims>0&&decims<2) {
+        hundreds==0?process.stdout.write(a[(decims+9)+ones].substr(0,1).toUpperCase()+a[(decims+9)+ones].substr(1)):process.stdout.write(a[(decims+9)+ones]);
+    }else if (decims>1) {
+        hundreds==0?process.stdout.write(b[decims].substr(0,1).toUpperCase() + b[decims].substr(1) + ' '):process.stdout.write(b[decims] + ' ');
+        if (ones>0) {
+            process.stdout.write(a[ones]);
+        }
+    }
+}
+}
