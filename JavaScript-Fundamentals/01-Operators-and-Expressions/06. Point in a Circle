@@ -1,0 +1,12 @@
+function solve(args) {
+    var radius = 2;
+    centerX = 0;
+    centerY = 0;
+    distance = Math.sqrt(((args[0] - centerX) * (args[0] - centerX)) +
+        ((args[1] - centerY) * (args[1] - centerY)));
+    if (distance <= (radius * radius)) {
+        console.log("yes " + distance.toFixed(2));
+    } else {
+        console.log('no ' + distance.toFixed(2));
+    }
+}
