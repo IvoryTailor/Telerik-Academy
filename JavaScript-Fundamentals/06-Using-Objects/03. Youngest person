@@ -1,0 +1,23 @@
+function solve3(args) {
+    function Person (fName, lName, age) {
+        this.FirstName = fName;
+        this.LastName = lName;
+        this.Age = age;
+    }
+    var people = [];
+    for (var i = 0, j = 0; i < args.length; i+=3, j+=1) {
+        people[j] = new Person(args[i], args[i+1], +args[i+2]);
+    }
+    Array.prototype.findMinAge = function () {
+        var min = Number.MAX_VALUE;
+        var youngest;
+        for (var i = 0; i < this.length; i++) {
+            if (this[i].Age < min) {
+                min = this[i].Age;
+                youngest = (this[i].FirstName + ' ' + this[i].LastName);
+            }
+        }
+        return youngest;
+    }
+    console.log(people.findMinAge());
+}
