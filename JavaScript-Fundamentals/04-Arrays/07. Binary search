@@ -1,0 +1,21 @@
+function solve(args) {
+    var arr = args[0].split('\n');
+    var num = +arr[0];
+    var x = +arr[arr.length-1];
+    var min = +arr[1];
+    var max = num -1;
+    var mid = 0;
+    arr.shift();
+    arr.pop();
+    while (min <= max) {
+        mid = ((min + max)/2) | 0;
+        if (x == +arr[mid]) {
+            return mid;
+        } else if (x < +arr[mid]) {
+            max = mid -1;
+        }else {
+            min = mid +1;
+        }
+    }
+    return -1; //ready to test
+}
