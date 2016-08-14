@@ -1,4 +1,4 @@
-function solve(args) {
+function solve4(args) {
     let text = args[0],
         inTag = false,
         currentTag = '',
