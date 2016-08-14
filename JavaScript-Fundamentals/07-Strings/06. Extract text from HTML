@@ -1,0 +1,13 @@
+function solve6(args) {
+     var result = new String;
+     for (var i = 0; i < args.length;) {
+         args[i] = args[i].replace(/<.*?>/g, '').trim();
+         if (args[i] == '') {
+             args.splice(i, 1);
+             continue;
+         }
+         result+=args[i];
+         i += 1;
+     }
+     console.log(result);
+}
