@@ -1,0 +1,22 @@
+function solve(args) {
+    var radius = 1.5;
+    centerX = 1;
+    centerY = 1;
+    pointX = +args[0];
+    pointY = +args[1];
+    recLeft = -1;
+    recRight = 6;
+    recTop = 1;
+    recBottom = -1;
+    isInCircle = 'outside';
+    isInRec = 'outside';
+    distance = Math.sqrt(((pointX - centerX) * (pointX - centerX)) +
+        ((pointY - centerY) * (pointY - centerY)));
+    if (distance <= radius) {
+        isInCircle = 'inside';
+    }
+    if (((pointX >= recLeft) && (pointX <= recRight)) && ((pointY >= recBottom) && pointY <= recTop)) {
+        isInRec = 'inside';
+    }
+    console.log(isInCircle + ' circle ' + isInRec + ' rectangle');
+}
