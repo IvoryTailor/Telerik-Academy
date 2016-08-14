@@ -1,0 +1,10 @@
+function solve(args) {
+    var war1 = args[0].split('\n');
+    if(war1[0]>war1[1]){
+        console.log('>');
+    }else if (war1[0]<war1[1]) {
+        console.log('<');
+    }else{
+        console.log('=');
+    }
+}
