@@ -1,0 +1,12 @@
+function solve(args) {
+    var arr = args[0].split('\n');
+    var size = +arr[0];
+    var count = 0;
+    arr = arr[1].split(' ');
+    for (var i = 1; i < size - 1; i++) {
+        if (((+arr[i] > (+arr[i-1]))) && ((+arr[i]) > (arr[i+1]))) {
+            count+=1;
+        }
+    }
+    return count;
+}
