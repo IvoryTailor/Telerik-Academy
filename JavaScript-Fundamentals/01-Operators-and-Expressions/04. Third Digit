@@ -1,0 +1,11 @@
+function solve(args) {
+        var result = (args[0]/100);
+        result=parseInt(result);
+        result=result%10;
+    if(result==7) {
+        console.log("true")
+    }
+    else {
+        console.log("false "+result)
+    }
+}
